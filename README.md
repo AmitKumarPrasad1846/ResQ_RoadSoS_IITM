@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="[https://placehold.co/1200x400/FF3B3B/FFFFFF?text=ResQ+%7C+Every+Second+Counts](https://placehold.co/1200x400/FF3B3B/FFFFFF?text=ResQ+%7C+Every+Second+Counts)" alt="ResQ Banner" width="100%"/>
+  <img src="assets/ResQ Logo.png" alt="ResQ Banner" width="100%"/>
   
   <h1>ResQ</h1>
   <h3>AI‑Powered Emergency Response System for Indian Roads</h3>
