@@ -60,7 +60,7 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; }
 }
 .logo { display: flex; align-items: center; gap: 6px; text-decoration: none; }
 .logo-icon {
-  width: 48px; height: 48px; border-radius: 50%;
+  width: 52px; height: 52px; border-radius: 50%;
   background: #fff; display: flex; justify-content: center; align-items: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12); overflow: hidden;
 }
@@ -452,7 +452,7 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; }
 }
 .logo { display: flex; align-items: center; gap: 6px; text-decoration: none; }
 .logo-icon {
-  width: 48px; height: 48px; border-radius: 50%;
+  width: 52px; height: 52px; border-radius: 50%;
   background: #fff; display: flex; justify-content: center; align-items: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12); overflow: hidden;
 }
