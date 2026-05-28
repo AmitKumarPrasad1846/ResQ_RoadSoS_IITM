@@ -4,66 +4,367 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ResQ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
+  <!-- ══════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════ -->
   <div class="navbar-wrapper">
     <nav class="navbar">
-
-      <!-- Logo -->
       <a href="#" class="logo">
         <div class="logo-icon">
-          <img src="ResQ Logo.png" alt="ResQ Logo"/>
+          <img src="ResQ_Logo.png" alt="ResQ Logo"/>
         </div>
         <span class="logo-text">
-          <span class="logo-res">Res<b style="color: #F90404;">Q</b>
+          <span class="logo-res">Res</span><span class="logo-q">Q</span>
         </span>
       </a>
-
-      <!-- Nav Links -->
       <ul class="nav-links">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Services</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact us</a></li>
       </ul>
-
-      <!-- Sign In -->
       <a href="#" class="btn-signin">Sign in</a>
-
     </nav>
   </div>
 
-  <!-- ── HERO SECTION ── -->
-  <section class="hero">
-
-    <h1 class="hero-title">
-      WELCOME TO <span class="brand-res">Res<b style="color: #F90404;">Q</b>
-    </h1>
-
+  <!-- ══════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-badge">AI-Powered Emergency Response</div>
+    <h1 class="hero-title">Every Second Counts</h1>
     <p class="hero-desc">
-      ResQ is your roadside guardian. Built with <b>Artificial Intelligence</b> and <b>IoT</b>,<br> it ensures
-      faster accident detection, instant alerts, and smarter rescue coordination.<br> Our
+      ResQ is your roadside guardian. Built with Artificial Intelligence and IoT, it ensures
+      faster accident detection, instant alerts, and smarter rescue coordination. Our
       mission is simple: reduce response time and save lives
     </p>
-
     <div class="hero-buttons">
-      <a href="#" class="btn-primary">View Services &rarr;</a>
-      <a href="#" class="btn-secondary">Get Started</a>
+      <a href="#" class="btn-primary">View Services →</a>
+      <a href="#" class="btn-outline">Get ResQ</a>
     </div>
-
-    <!-- Scroll Down Arrow -->
-    <a href="#" class="scroll-down" id="scrollBtn" aria-label="Scroll down">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-           stroke="currentColor" stroke-width="2">
+    <div class="scroll-hint" id="scrollBtn">
+      <span>scroll</span>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
       </svg>
-    </a>
-
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Cities Active</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">Services Mapped</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="stat-num">4s</span>
+        <span class="stat-label">Avg Response</span>
+      </div>
+    </div>
   </section>
+
+  <!-- ══════════════════════════════════
+       THE PROBLEM
+  ══════════════════════════════════ -->
+  <section class="problem-section" id="problem">
+    <p class="section-tag">THE PROBLEM</p>
+    <h2 class="problem-heading">
+      <span class="highlight-red">1.5 lakh+</span> deaths every year<br>
+      Most of them are <span class="highlight-red">preventable</span>
+    </h2>
+    <p class="problem-desc">
+      According to the Ministry of Road Transport and Highways, India reported 1,72,890 road accident fatalities in 2023.<br>
+      <em>That is one death approximately every three minutes.</em>
+    </p>
+    <div class="stat-pill">
+      <span class="pill-num">59%</span>
+      <span class="pill-text">of road accident deaths occur due to delayed rescue</span>
+    </div>
+
+    <!-- 3 Steps -->
+    <div class="steps-box">
+      <p class="section-tag">FROM CRASH TO CARE</p>
+      <h3 class="steps-title">Three Steps. That's It.</h3>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <h4>Detect</h4>
+          <p>AI detects crash patterns using motion sensors OR user manually taps SOS button.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <h4>Locate</h4>
+          <p>Live GPS coordinates locked automatically. No typing. No searching.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <h4>Rescue</h4>
+          <p>Nearest services appear instantly. One tap connects. Help arrives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FEATURES
+  ══════════════════════════════════ -->
+  <section class="features-section" id="features">
+    <p class="section-tag">FEATURES</p>
+    <h2 class="section-heading">Everything You Need in One Place</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <rect x="8" y="2" width="8" height="4" rx="1"/><path d="M8 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2h-2"/><path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h4>Instant Access</h4>
+        <p>Trauma centres, ambulances, police stations, vehicle rescue – all within 5km. One tap to call.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/>
+          </svg>
+        </div>
+        <h4>AI Smart Routing</h4>
+        <p>Fastest route to nearest trauma centre considering live traffic &amp; hospital availability.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon sos-icon">SOS</div>
+        <h4>One-Tap SOS</h4>
+        <p>Live GPS + timestamp sent to all relevant services &amp; emergency contacts instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h4>Bystander Mode</h4>
+        <p>Even if victim is unconscious, any passerby can send help. No login required.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h4>Privacy First</h4>
+        <p>Location shared only when SOS is triggered. No tracking. No surveillance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4>Offline Mode</h4>
+        <p>Works even with moderate internet. Lightweight. Fast. Practical.</p>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="features-stats">
+      <div class="f-stat">
+        <span class="f-stat-num">1250+</span>
+        <span class="f-stat-label">Accidents Prevented</span>
+      </div>
+      <div class="f-stat">
+        <span class="f-stat-num">890+</span>
+        <span class="f-stat-label">Lives saved</span>
+      </div>
+      <div class="f-stat">
+        <span class="f-stat-num">5200+</span>
+        <span class="f-stat-label">Emergency Services</span>
+      </div>
+      <div class="f-stat">
+        <span class="f-stat-num">15000+</span>
+        <span class="f-stat-label">Active Users</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       THE TEAM
+  ══════════════════════════════════ -->
+  <section class="team-section" id="team">
+    <p class="section-tag">THE TEAM</p>
+    <h2 class="section-heading">Built by Innovators, for India</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="amit.jpg" alt="Amit Kumar Prasad" onerror="this.style.display='none';this.parentElement.classList.add('no-photo')"/>
+        </div>
+        <h4>Amit Kumar Prasad</h4>
+        <p>Project Director &amp; Hardware Lead</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="chandrashekhar.jpg" alt="Chandrashekhar Ahirwar" onerror="this.style.display='none';this.parentElement.classList.add('no-photo')"/>
+        </div>
+        <h4>Chandrashekhar Ahirwar</h4>
+        <p>Dashboard &amp; Backend Lead</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo no-photo"></div>
+        <h4>Hataf Rakshi</h4>
+        <p>App development Lead</p>
+      </div>
+    </div>
+    <div class="team-grid team-grid-row2">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="kamal.jpg" alt="Kamal Das" onerror="this.style.display='none';this.parentElement.classList.add('no-photo')"/>
+        </div>
+        <h4>Kamal Das</h4>
+        <p>Pitch &amp; Presentation Lead</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo no-photo"></div>
+        <h4>Mohak Verma</h4>
+        <p>Mechanical Domain Lead</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FAQ
+  ══════════════════════════════════ -->
+  <section class="faq-section" id="faq">
+    <p class="section-tag">FAQ</p>
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How does ResQ detect accidents without false alarms?
+          <svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>ResQ uses a combination of accelerometer data, gyroscope readings, and AI pattern recognition to distinguish genuine crash signatures from everyday bumps. Multiple sensor thresholds must be crossed simultaneously before an alert is triggered, dramatically reducing false alarms.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What if I'm unconscious and can't press the SOS button?
+          <svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>ResQ's AI auto-detects crash patterns even when you're unable to respond. It sends alerts automatically within seconds of impact detection, without requiring any manual input from the user.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Does ResQ track my location all the time? Is my data safe?
+          <svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>No. ResQ only accesses your location when an SOS is triggered. We do not track, store, or sell your location data under normal usage. Your privacy is our top priority.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What makes ResQ different from other emergency apps?
+          <svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>ResQ combines IoT hardware, AI crash detection, real-time GPS routing, and a bystander mode in one unified system — purpose-built for Indian roads and emergency infrastructure. Most apps require you to be conscious and manually trigger help.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          When and where can I actually use ResQ? Is it available now?
+          <svg class="faq-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>ResQ is currently in active pilot across 20+ cities in India. We're expanding rapidly. Sign up for early access or join our newsletter to stay updated on the launch in your city.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       GET IN TOUCH
+  ══════════════════════════════════ -->
+  <section class="contact-section" id="contact">
+    <p class="section-tag">GET IN TOUCH</p>
+    <h2 class="section-heading">Let's Work Together</h2>
+    <div class="contact-card">
+      <h3>Join us in making Indian roads safer.</h3>
+      <p>Whether you're a partner, a volunteer, or just someone who cares — we need you.</p>
+      <div class="contact-buttons">
+        <a href="#" class="btn-partner">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-5-4M9 20H4v-2a4 4 0 015-4m6-4a4 4 0 11-8 0 4 4 0 018 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          Partner with Us
+        </a>
+        <a href="#" class="btn-newsletter">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Join Newsletter
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-res">Res</span><span class="logo-q">Q</span>
+        </div>
+        <p class="footer-tagline">Every Second Counts.</p>
+        <p class="footer-sub">AI-powered emergency response for Indian roads.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>PRODUCT</h5>
+          <a href="#">How it works</a>
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Get ResQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>COMPANY</h5>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h5>LEGAL</h5>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Services</a>
+          <a href="#">Security &amp; GDPR</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
