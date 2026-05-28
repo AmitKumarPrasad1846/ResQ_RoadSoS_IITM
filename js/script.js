@@ -2,6 +2,8 @@
 //   ResQ Landing Page — script.js
 // ─────────────────────────────────────────
 
+// this code is developed by chandrashekhar and amit 
+
 // ── Smooth scroll-down button ──
 const scrollBtn = document.getElementById('scrollBtn');
 
