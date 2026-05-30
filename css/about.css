@@ -305,7 +305,6 @@ footer {
   .section { padding: 70px 20px; }
   .crisis-section { padding: 70px 20px; }
   .why-section { padding: 70px 20px; }
-  nav { padding: 14px 16px; }
 }
 @media (max-width: 600px) {
   .footer-top { grid-template-columns: 1fr; }
