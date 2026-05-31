@@ -19,6 +19,7 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; }
   display: block;
   text-align: center;
 }
+
 .section-heading {
   font-family: 'Poppins', sans-serif;
   font-size: 40px;
@@ -311,26 +312,26 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; }
   box-shadow: 0 4px 24px rgba(100,140,200,0.15);
 }
 .contact-card h3 {
-  font-size: 30px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px;
+  font-size: 60px; font-weight: 700; color: #000000; margin-bottom: 16px;
 }
 .contact-card > p {
-  font-size: 17px; color: #445; margin-bottom: 36px; line-height: 1.6;
+  font-size: 31px; color: #323232; margin-bottom: 36px; line-height: 1.6;
 }
-.contact-buttons { display: flex; gap: 20px; justify-content: center; }
+.contact-buttons { display: flex; gap: 100px; justify-content: center; }
 .btn-partner {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: #1a56a0; color: #fff;
-  padding: 14px 32px; border-radius: 50px;
-  font-size: 16px; font-weight: 600; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 20px;
+  background: #1075C7; color: #FFFFFF;
+  padding: 14px 32px; border-radius: 60px;
+  font-size: 29px; font-weight: 400; text-decoration: none;
   transition: background .2s, transform .15s;
 }
 .btn-partner svg { width: 20px; height: 20px; }
-.btn-partner:hover { background: #154d91; transform: translateY(-2px); }
+.btn-partner:hover { background: #1075C7; transform: translateY(-2px); }
 .btn-newsletter {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(200,210,220,0.65); color: #1a1a2e;
+  display: inline-flex; align-items: center; gap: 20px;
+  background: #CBD6E1; color: #000000;
   padding: 14px 32px; border-radius: 50px;
-  font-size: 16px; font-weight: 600; text-decoration: none;
+  font-size: 29px; font-weight: 400; text-decoration: none;
   border: 1.5px solid rgba(100,130,170,0.25);
   transition: background .2s, transform .15s;
 }
@@ -341,30 +342,30 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; }
    FOOTER
 ═══════════════════════════════════════════ */
 .footer {
-  background: #1e2128; color: #ccc;
+  background: #252525; color: #ccc;
   padding: 60px 80px 36px;
 }
 .footer-top {
   display: flex; justify-content: space-between;
   gap: 60px; margin-bottom: 48px;
 }
-.footer-brand { max-width: 280px; }
+.footer-brand { max-width: 2800px; }
 .footer-logo {
   font-family: 'Potta One', cursive;
-  font-size: 28px; margin-bottom: 14px;
+  font-size: 42px; margin-bottom: 14px;
 }
-.footer-tagline { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-.footer-sub     { font-size: 14px; color: #999; line-height: 1.6; }
+.footer-tagline { font-size: 27px; font-weight: 600; color: #AAAAAA; margin-bottom: 8px; }
+.footer-sub     { font-size: 27px; color: #AAAAAA; line-height: 1.6; }
 .footer-links { display: flex; gap: 60px; }
 .footer-col { display: flex; flex-direction: column; gap: 12px; }
 .footer-col h5 {
-  font-size: 13px; font-weight: 700; letter-spacing: 1.5px;
+  font-size: 30px; font-weight: 700; letter-spacing: 1.5px;
   color: #fff; margin-bottom: 4px;
 }
-.footer-col a { font-size: 14px; color: #aaa; text-decoration: none; transition: color .2s; }
+.footer-col a { font-size: 27px; color: #aaa; text-decoration: none; transition: color .2s; }
 .footer-col a:hover { color: #fff; }
 .footer-divider { height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 28px; }
-.footer-copy { font-size: 14px; color: #888; text-align: center; }
+.footer-copy { font-size: 27px; color: #888; text-align: center; }
 
 /* ═══════════════════════════════════════════
    RESPONSIVE
