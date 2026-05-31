@@ -211,6 +211,7 @@ resq/
 │
 ├── .env.example
 ├── .gitignore
+├── CONTRIBUTING.md
 └── README.md
 ```
 
