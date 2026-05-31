@@ -2,248 +2,192 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ResQ – About</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/about.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ResQ – About Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/about.css"/>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════
-       NAVBAR
-  ══════════════════════════════════════════ -->
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <img src="ResQ Logo.png" alt="ResQ Logo" class="logo-icon" />
-        <span class="nav-logo-text">Res<span>Q</span></span>
+  <!-- ══ NAVBAR ══ -->
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <img src="assets/ResQ Logo.png" alt="ResQ Logo"/>
+        </div>
+        <span class="logo-text">
+          <span class="logo-res">Res</span><span class="logo-q">Q</span>
+        </span>
       </a>
-
-      <div class="nav-links">
-        <a href="home.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact us</a>
-      </div>
-
-      <a href="#" class="nav-signin">Sign in</a>
-    </div>
-  </nav>
-
-
-  <!-- ══════════════════════════════════════════
-       HERO
-  ══════════════════════════════════════════ -->
-  <section class="hero" id="hero">
-    <div class="hero-badge">Our Story</div>
-
-    <h1>We're on a mission to make Indian roads safer</h1>
-
-    <p class="hero-sub">
-      ResQ was born from a simple question:<br />
-      Why does help take so long to reach accident victims?<br />
-      <a href="#">We're building the answer.</a>
-    </p>
-
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-        <path d="M10 4v12M5 11l5 5 5-5" stroke="#6B7280"
-              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       WHO WE ARE
-  ══════════════════════════════════════════ -->
-  <div id="who-we-are">
-    <div class="section">
-      <div class="who-grid">
-
-        <!-- Left: text -->
-        <div class="reveal">
-          <p class="section-label">Who We Are</p>
-          <h2 class="section-title">From an idea to a<br />life-saving movement.</h2>
-          <div class="section-body">
-            <p>ResQ started with a simple belief — that no one should die because help didn't know where to go. Today, we're building an integrated emergency response ecosystem.</p>
-            <p>Hundreds of families lose a loved one to road accidents. Most of these deaths happen not because help wasn't available — but because nobody could find it in time. <strong>ResQ changes that.</strong></p>
-          </div>
-          <a href="#" class="btn-primary">Get ResQ &rarr;</a>
-        </div>
-
-        <!-- Right: app screenshot -->
-        <div class="who-img reveal">
-          <img src="assets/who we are section img.png"
-               alt="ResQ app showing nearest emergency services" />
-        </div>
-
-      </div><!-- /.who-grid -->
-
-      <!-- Mission / Vision cards -->
-      <div class="mv-grid reveal">
-        <div class="mv-card mission">
-          <h3>Our Mission</h3>
-          <p>Turn every accident location into a live emergency signal. No victim should ever search for help. Help should find them.</p>
-        </div>
-        <div class="mv-card vision">
-          <h3>Our Vision</h3>
-          <p>An India where zero lives are lost due to delayed emergency response. A country where every road has a safety net.</p>
-        </div>
-      </div>
-
-    </div><!-- /.section -->
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li class="active"><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul>
+      <a href="#" class="btn-signin">Sign in</a>
+    </nav>
   </div>
 
+  <!-- ══ HERO ══ -->
+  <section class="about-hero">
+    <div class="about-hero-badge">Our Story</div>
+    <h1 class="about-hero-title">We're on a mission to<br>make Indian roads safer</h1>
+    <p class="about-hero-desc">
+      <span>ResQ was born from a simple question:</span><br>
+      <span>Why does help take so long to reach accident victims?</span><br>
+      <span>We're building the answer.</span>
+    </p>
+  </section>
 
-  <!-- ══════════════════════════════════════════
-       CRISIS STATS
-  ══════════════════════════════════════════ -->
-  <section class="crisis-section" id="crisis">
-    <div class="crisis-inner">
-
-      <div class="reveal">
-        <p class="section-label">The Crisis We're Solving</p>
-        <h2 class="section-title">
-          Over 1.7 lakh lives lost every year.<br />
-          Most of them preventable.
-        </h2>
+  <!-- ══ WHO WE ARE ══ -->
+  <section class="who-section" id="who">
+    <div class="who-inner">
+      <div class="who-content">
+        <p class="section-tag-red">WHO WE ARE</p>
+        <h2 class="who-heading">From an idea to a<br>life-saving movement.</h2>
+        <p class="who-desc">
+          ResQ started with a simple belief — that no one should die because help didn't know where to go. Today, we're building an integrated emergency response ecosystem.<br><br>
+          Hundreds of families lose a loved one to road accidents. Most of these deaths happen not because help wasn't available — but because nobody could find it in time. <strong>ResQ changes that.</strong>
+        </p>
+        <a href="#" class="btn-get-resq">Get ResQ</a>
       </div>
-
-      <div class="stats-grid reveal">
-        <div class="stat-card">
-          <div class="stat-pill" data-target="1,72,890">1,72,890</div>
-          <p class="stat-label">Road accident deaths<br />(2023–24)</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-pill" data-target="59%">59%</div>
-          <p class="stat-label">Deaths due to delayed<br />rescue</p>
-        </div>
+      <div class="who-image">
+        <img src="assets/who we are section img.png" alt="ResQ App"/>
       </div>
+    </div>
 
-      <p class="crisis-desc reveal">
-        India reports the highest number of road accident fatalities in the world.
-        More than half of these deaths occur in the <em>"golden window"</em> after the crash —
-        when a trauma centre or ambulance is nearby but no one can locate it in time.
-        ResQ closes that gap.
-      </p>
-
+    <!-- Mission & Vision Cards -->
+    <div class="mv-grid">
+      <div class="mv-card mv-mission">
+        <h4>Our Mission</h4>
+        <p>Turn every accident location into a live emergency signal. No victim should ever search for help. Help should find them.</p>
+      </div>
+      <div class="mv-card mv-vision">
+        <h4>Our Vision</h4>
+        <p>An India where zero lives are lost due to delayed emergency response. A country where every road has a safety net.</p>
+      </div>
     </div>
   </section>
 
+  <!-- ══ THE CRISIS WE'RE SOLVING ══ -->
+  <section class="crisis-section" id="crisis">
+    <p class="section-tag-red">THE CRISIS WE'RE SOLVING</p>
+    <h2 class="crisis-heading">
+      Over 1.7 lakh lives lost every year.<br>
+      Most of them preventable.
+    </h2>
+    <div class="crisis-stats">
+      <div class="crisis-stat-card">
+        <div class="crisis-pill">1,72,890</div>
+        <p>Road accident deaths<br>(2023-24)</p>
+      </div>
+      <div class="crisis-stat-card">
+        <div class="crisis-pill">59%</div>
+        <p>Deaths due to delayed<br>rescue</p>
+      </div>
+    </div>
+    <p class="crisis-desc">
+      India reports the highest number of road accident fatalities in the world. More than half of
+      these deaths occur in the "golden window" after the crash.<br>
+      when a trauma centre or ambulance is nearby but no one can locate it in time.<br>
+      ResQ closes that gap.
+    </p>
+  </section>
 
-  <!-- ══════════════════════════════════════════
-       WHY WE BUILT
-  ══════════════════════════════════════════ -->
+  <!-- ══ WHY WE BUILT ══ -->
   <section class="why-section" id="why">
     <div class="why-inner">
-
-      <!-- Left: story -->
-      <div class="reveal">
-        <p class="section-label">Why We Built</p>
-        <h2 class="section-title">
-          This isn't just a product.<br />
+      <div class="why-content">
+        <p class="section-tag-red">WHY WE BUILT</p>
+        <h2 class="why-heading">
+          This isn't just a product.<br>
           It's a response to a real failure.
         </h2>
-        <div class="section-body">
-          <p>December 2022. Mumbai. A retired professor. 1.8 km from a hospital. Seven calls. Forty-seven minutes. Too late.</p>
-          <p>Same story in Bengaluru. Same story in Nagpur. Same story in Jaipur. Different cities. Different people. Same ending — because no one knew where to send help.</p>
-          <p>India loses 1.7 lakh lives every year. Most don't die on impact. They die waiting.</p>
-          <p>ResQ was built for all of them. One tap. One location. One dispatch.</p>
-          <p>Because no family should lose someone to a hospital that was just 1.8 km away.</p>
+        <p class="why-desc">
+          December 2022. Mumbai. A retired professor. 1.8 km from a hospital.<br>
+          Seven calls. Forty-seven minutes. Too late.
+        </p>
+        <p class="why-desc">
+          Same story in Bengaluru. Same story in Nagpur. Same story in Jaipur.
+          Different cities. Different people. Same ending — because no one knew where to send help.
+        </p>
+        <p class="why-desc">
+          India loses 1.7 lakh lives every year. Most don't die on impact.<br>
+          They die waiting.
+        </p>
+        <p class="why-desc">
+          ResQ was built for all of them. One tap. One location. One dispatch.
+        </p>
+        <p class="why-desc">
+          Because no family should lose someone to a hospital that was just 1.8 km away.
+        </p>
+      </div>
+      <div class="why-image">
+        <div class="why-img-frame">
+          <img src="assets/why we built section img.png" alt="Accident scene"/>
+          <div class="why-glow"></div>
         </div>
-      </div>
-
-      <!-- Right: crash scene image -->
-      <div class="why-img reveal">
-        <img src="assets/why we built section img.png"
-             alt="Accident scene at night with ResQ notification" />
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       CTA
-  ══════════════════════════════════════════ -->
-  <section class="cta-section" id="contact">
-    <div class="reveal">
-      <h2>Ready to make Indian roads safer?</h2>
-      <p>Whether you're a user, partner, or investor — let's talk.</p>
-
-      <div class="cta-btns">
-        <a href="#" class="btn-cta-primary">
-          <img src="assets/Partnership with us.png" alt="" class="btn-icon" />
-          Partner with Us
-        </a>
-        <a href="#" class="btn-cta-outline">
-          <img src="assets/request demo.png" alt="" class="btn-icon" />
-          Request Demo
-        </a>
       </div>
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════ -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-
-        <!-- Brand -->
-        <div class="footer-brand">
-          <img src="assets/ResQ Logo.png" alt="ResQ" class="footer-logo-img" />
-          <h3>Res<span>Q</span></h3>
-          <p>Every Second Counts.<br />AI-powered emergency response for Indian roads.</p>
-        </div>
-
-        <!-- Product -->
-        <div class="footer-col">
-          <h4>Product</h4>
-          <a href="services.html">How it works</a>
-          <a href="services.html">Features</a>
-          <a href="services.html">Pricing</a>
-          <a href="home.html">Get ResQ</a>
-        </div>
-
-        <!-- Company -->
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About Us</a>
-          <a href="blog.html">Blog</a>
-          <a href="careers.html">Careers</a>
-          <a href="dashboard.html">Dashboard</a>
-        </div>
-
-        <!-- Legal -->
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-of-service.html">Terms of Services</a>
-          <a href="security-gdpr.html">Security &amp; GDPR</a>
-        </div>
-
-      </div><!-- /.footer-top -->
-
-      <hr class="footer-divider" />
-      <p class="footer-bottom">
-        © 2026 ResQ – A small team, a big mission, and 1.7 lakh reasons to never stop.
-      </p>
+  <!-- ══ CTA ══ -->
+  <section class="about-cta" id="cta">
+    <h2 class="cta-heading">Ready to make Indian roads safer?</h2>
+    <p class="cta-desc">Whether you're a user, partner, or investor — let's talk.</p>
+    <div class="cta-buttons">
+      <a href="#" class="cta-btn-primary">
+        <img src="assets/Partnership with us.png" alt="Partner"/>
+        Partner with Us
+      </a>
+      <a href="#" class="cta-btn-secondary">
+        <img src="assets/request_demo.png" alt="Demo"/>
+        Request Demo
+      </a>
     </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-res">Res</span><span class="logo-q">Q</span>
+        </div>
+        <p class="footer-tagline">Every Second Counts.</p>
+        <p class="footer-sub">AI-powered emergency response for Indian roads.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>PRODUCT</h5>
+          <a href="#">How it works</a>
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Get ResQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>COMPANY</h5>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h5>LEGAL</h5>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Services</a>
+          <a href="#">Security &amp; GDPR</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
   </footer>
 
-
-  <!-- Script -->
-  <script src="js/jsscript.js"></script>
+  <script src="about.js"></script>
 </body>
 </html>

@@ -10,9 +10,6 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; background: #fff; }
 /* ═══════════════════════════════════════════
    NAVBAR
 ═══════════════════════════════════════════ */
-/* ═══════════════════════════════════════════
-   NAVBAR
-═══════════════════════════════════════════ */
 .navbar-wrapper {
   position: fixed;
   top: 46px; left: 0; right: 0;
@@ -29,13 +26,13 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; background: #fff; }
   background: rgba(96, 162, 234, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 60px;
+  border-radius: 100px;
   padding: 10px 18px 10px 12px;
-  width: 1285px;
-  height: 105px;
+  width: 1000px;
+  height: 90px;
   pointer-events: all;
 }
-.logo { display: flex; align-items: center; gap: 6px; text-decoration: none; }
+.logo { display: flex; align-items: center; gap: 4px; text-decoration: none; }
 .logo-icon {
   width: 40px; height: 38px; border-radius: 50%;
   margin-bottom: 14px; margin-right: 6px;
@@ -50,16 +47,16 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; background: #fff; }
 }
 .logo-res { color: #1a56a0; }
 .logo-q   { color: #F90404; }
-.nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
 .nav-links li a {
-  text-decoration: none; font-size: 25px; font-weight: 100; color: #000000;
+  text-decoration: none; font-size: 20px; font-weight: 100; color: #000000;
   padding: 12px 24px; border-radius: 30px; transition: background .2s;
 }
 .nav-links li a:hover { background: rgba(116, 180, 249, 0.67); }
 .nav-links li.active a { background: rgba(59, 143, 234, 0.67); }
 .btn-signin {
   background: #000000; color: #FFFFFF; padding: 15px 30px;
-  border-radius: 50px; font-size: 25px; font-weight: 100;
+  border-radius: 50px; font-size: 20px; font-weight: 100;
   text-decoration: none; transition: opacity .2s;
 }
 .btn-signin:hover { opacity: .82; }

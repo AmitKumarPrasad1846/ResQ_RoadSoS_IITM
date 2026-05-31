@@ -30,6 +30,9 @@ body { font-family: 'Poppins', sans-serif; color: #1a1a2e; }
 }
 .highlight-red { color: #e03030; }
 
+body {
+  background: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
+}
 /* ═══════════════════════════════════════════
    NAVBAR
 ═══════════════════════════════════════════ */
