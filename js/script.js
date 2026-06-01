@@ -1,55 +1,75 @@
 /* ═══════════════════════════════════════════════════════
    ResQ Home Page — Complete JavaScript
-   Smooth Scroll | Animations | Counters | Mobile Menu
+   Dark Mode | Mobile Menu | Smooth Scroll | Animations
 ════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ═══════════════════════════════════════════════════════
-     1. MOBILE HAMBURGER MENU
+     1. DARK MODE TOGGLE
      ══════════════════════════════════════════════════════ */
-  const navbar = document.querySelector('.navbar');
-  const navLinks = document.querySelector('.nav-links');
-  const hamburger = document.createElement('button');
+  const darkModeToggle = document.getElementById('darkModeToggle');
 
-  // Only add hamburger on mobile
-  if (window.innerWidth <= 768) {
-    hamburger.className = 'hamburger-menu';
-    hamburger.innerHTML = `
-      <span></span>
-      <span></span>
-      <span></span>
-    `;
-
-    // Insert hamburger before nav-links
-    const navbarWrapper = document.querySelector('.navbar');
-    if (navbarWrapper && !document.querySelector('.hamburger-menu')) {
-      navbarWrapper.insertBefore(hamburger, navLinks);
+  if (darkModeToggle) {
+    // Check saved preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.textContent = '☀️';
     }
 
-    // Toggle menu on click
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('mobile-active');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!navbar.contains(e.target) && navLinks.classList.contains('mobile-active')) {
-        navLinks.classList.remove('mobile-active');
-      }
-    });
-
-    // Close menu when clicking on a link
-    const allLinks = document.querySelectorAll('.nav-links a');
-    allLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('mobile-active');
-      });
+    // Toggle on click
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      darkModeToggle.textContent = isDark ? '☀️' : '🌙';
     });
   }
 
   /* ═══════════════════════════════════════════════════════
-     2. SCROLL REVEAL ANIMATION
+     2. MOBILE HAMBURGER MENU
+     ══════════════════════════════════════════════════════ */
+  const navbar = document.querySelector('.navbar');
+  const navLinks = document.querySelector('.nav-links');
+
+  function setupMobileMenu() {
+    const existingHamburger = document.querySelector('.hamburger-menu');
+    if (existingHamburger) {
+      existingHamburger.remove();
+    }
+
+    if (window.innerWidth <= 768 && navbar && navLinks) {
+      const hamburger = document.createElement('button');
+      hamburger.className = 'hamburger-menu';
+      hamburger.innerHTML = `<span></span><span></span><span></span>`;
+
+      navbar.insertBefore(hamburger, navLinks);
+
+      hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('mobile-active');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!navbar.contains(e.target) && navLinks.classList.contains('mobile-active')) {
+          navLinks.classList.remove('mobile-active');
+        }
+      });
+
+      const allLinks = document.querySelectorAll('.nav-links a');
+      allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-active');
+        });
+      });
+    }
+  }
+
+  setupMobileMenu();
+  window.addEventListener('resize', setupMobileMenu);
+
+  /* ═══════════════════════════════════════════════════════
+     3. SCROLL REVEAL ANIMATION
      ══════════════════════════════════════════════════════ */
   const revealElements = document.querySelectorAll('.feature-card, .step-item, .team-card, .stat-pill, .contact-card');
 
@@ -79,13 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.head.appendChild(style);
 
   /* ═══════════════════════════════════════════════════════
-     3. NAVBAR SHRINK ON SCROLL + ACTIVE LINK
+     4. NAVBAR SHRINK ON SCROLL
      ══════════════════════════════════════════════════════ */
   const navbarEl = document.querySelector('.navbar');
-  const navLinksEl = document.querySelectorAll('.nav-links a');
-  const sections = document.querySelectorAll('section');
 
-  // Shrink navbar on scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbarEl.style.padding = '8px 20px';
@@ -94,60 +111,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Active link highlight on scroll
-  function updateActiveLink() {
-    let current = '';
-    const scrollPosition = window.scrollY + 150;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinksEl.forEach(link => {
-      link.classList.remove('active');
-      const href = link.getAttribute('href').substring(1);
-      if (href === current) {
-        link.classList.add('active');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', updateActiveLink);
-  updateActiveLink();
-
   /* ═══════════════════════════════════════════════════════
-     4. SMOOTH SCROLL FOR ANCHOR LINKS
+     5. SMOOTH SCROLL FOR ANCHOR LINKS
      ══════════════════════════════════════════════════════ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
-
       if (targetId === '#') return;
 
       const target = document.querySelector(targetId);
-
       if (target) {
         e.preventDefault();
         const offset = 80;
         const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
         history.pushState(null, null, targetId);
       }
     });
   });
 
   /* ═══════════════════════════════════════════════════════
-     5. SCROLL BUTTON (Hero Section)
+     6. SCROLL BUTTON (Hero Section)
      ══════════════════════════════════════════════════════ */
   const scrollBtn = document.getElementById('scrollBtn');
   if (scrollBtn) {
@@ -156,16 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (problemSection) {
         const offset = 80;
         const targetPosition = problemSection.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
       }
     });
   }
 
   /* ═══════════════════════════════════════════════════════
-     6. STAT COUNTER ANIMATION
+     7. STAT COUNTER ANIMATION
      ══════════════════════════════════════════════════════ */
   function animateCounter(element, targetValue, suffix = '') {
     let start = 0;
@@ -181,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         element.textContent = targetValue + suffix;
       }
     }
-
     updateCounter();
   }
 
@@ -190,16 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) {
         const element = entry.target;
         const text = element.textContent;
-
         const match = text.match(/(\d+)(\+?)/);
         if (match) {
           const targetNum = parseInt(match[1]);
           const suffix = match[2] || '';
-
           element.textContent = '0' + suffix;
           animateCounter(element, targetNum, suffix);
         }
-
         statObserver.unobserve(element);
       }
     });
@@ -210,78 +187,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ═══════════════════════════════════════════════════════
-     7. FAQ ACCORDION
+     8. FAQ ACCORDION
      ══════════════════════════════════════════════════════ */
   const faqItems = document.querySelectorAll('.faq-item');
 
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
-
     question.addEventListener('click', () => {
       faqItems.forEach(otherItem => {
         if (otherItem !== item && otherItem.classList.contains('open')) {
           otherItem.classList.remove('open');
-          const otherButton = otherItem.querySelector('.faq-question');
-          if (otherButton) {
-            otherButton.setAttribute('aria-expanded', 'false');
-          }
         }
       });
-
       item.classList.toggle('open');
-      const isExpanded = item.classList.contains('open');
-      question.setAttribute('aria-expanded', isExpanded);
     });
   });
-
-  /* ═══════════════════════════════════════════════════════
-     8. BUTTON RIPPLE EFFECT
-     ══════════════════════════════════════════════════════ */
-  const rippleButtons = document.querySelectorAll('.btn-primary, .btn-outline, .btn-partner, .btn-newsletter, .btn-signin');
-
-  rippleButtons.forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      const rect = this.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const ripple = document.createElement('span');
-      ripple.className = 'ripple-effect';
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
-
-      this.style.position = 'relative';
-      this.style.overflow = 'hidden';
-
-      this.appendChild(ripple);
-
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
-    });
-  });
-
-  const rippleStyle = document.createElement('style');
-  rippleStyle.textContent = `
-    .ripple-effect {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 50%;
-      transform: scale(0);
-      animation: ripple-animation 0.6s ease-out;
-      pointer-events: none;
-    }
-    
-    @keyframes ripple-animation {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
-    }
-  `;
-  document.head.appendChild(rippleStyle);
 
   /* ═══════════════════════════════════════════════════════
      9. BUTTON ALERTS
@@ -348,42 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   /* ═══════════════════════════════════════════════════════
-     11. RESIZE HANDLER (For mobile menu on orientation change)
-     ══════════════════════════════════════════════════════ */
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      if (navLinks) {
-        navLinks.classList.remove('mobile-active');
-      }
-      const existingHamburger = document.querySelector('.hamburger-menu');
-      if (existingHamburger) {
-        existingHamburger.remove();
-      }
-    } else {
-      if (!document.querySelector('.hamburger-menu') && navbar && navLinks) {
-        const newHamburger = document.createElement('button');
-        newHamburger.className = 'hamburger-menu';
-        newHamburger.innerHTML = `<span></span><span></span><span></span>`;
-        navbar.insertBefore(newHamburger, navLinks);
-
-        newHamburger.addEventListener('click', () => {
-          navLinks.classList.toggle('mobile-active');
-        });
-      }
-    }
-  });
-
-  /* ═══════════════════════════════════════════════════════
-     12. CONSOLE LOG
+     11. CONSOLE LOG
      ══════════════════════════════════════════════════════ */
   console.log('ResQ Website Loaded ✅');
-  console.log('Features: Mobile Menu | Smooth Scroll | Counter Animation | FAQ Accordion');
-
+  console.log('Features: Dark Mode | Mobile Menu | Smooth Scroll | Counter Animation');
 });

@@ -1,7 +1,67 @@
 /* ═══════════════════════════════════════════════════════
    ResQ Home Page — Complete Style Sheet
-   Original Colors | Glass Effect | Mobile Navbar Fixed
+   Dark Mode Included | Glass Effect | Responsive
 ════════════════════════════════════════════════════════ */
+
+/* ===== DARK MODE VARIABLES ===== */
+:root {
+  --bg-body: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
+  --text-main: #1a1a2e;
+  --text-light: #3F3C3C;
+  --card-bg: #CCD7E2;
+  --card-bg-light: #FBE1E1;
+  --nav-bg: rgba(96, 162, 234, 0.85);
+  --footer-bg: #252525;
+  --btn-primary: #1075C7;
+  --btn-primary-hover: #05213F;
+  --border-light: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+  --bg-body: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
+  --text-main: #ffffff;
+  --text-light: #cccccc;
+  --card-bg: #1e2a4a;
+  --card-bg-light: #2a1a3a;
+  --nav-bg: rgba(15, 30, 60, 0.95);
+  --footer-bg: #0a0a15;
+  --btn-primary: #ff6b6b;
+  --btn-primary-hover: #ee5a24;
+  --border-light: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode button style */
+.dark-mode-btn {
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.dark-mode-btn:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .dark-mode-btn {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth transitions */
+body,
+.feature-card,
+.steps-box,
+.stat-pill,
+.faq-item,
+.navbar,
+.footer,
+.contact-card {
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
 /* ───────────────────────────────────────────────────────
    RESET & BASE
@@ -21,8 +81,8 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  color: #1a1a2e;
-  background: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
+  background: var(--bg-body);
+  color: var(--text-main);
   overflow-x: hidden;
   line-height: 1.5;
 }
@@ -47,7 +107,7 @@ body {
   font-size: clamp(24px, 4vw, 36px);
   font-weight: 700;
   text-align: center;
-  color: #1a1a2e;
+  color: var(--text-main);
   margin-bottom: 40px;
 }
 
@@ -56,7 +116,7 @@ body {
 }
 
 /* ───────────────────────────────────────────────────────
-   GLASS EFFECT NAVBAR (Fixed for Mobile)
+   GLASS EFFECT NAVBAR
 ─────────────────────────────────────────────────────── */
 .navbar-wrapper {
   position: fixed;
@@ -74,19 +134,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Enhanced glass effect with semi-transparent blue background */
-  background: rgba(96, 162, 234, 0.25);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 80px;
   padding: 10px 24px;
   width: 100%;
   max-width: 1200px;
   pointer-events: all;
   transition: all 0.3s ease;
-  /* Softer shadow & border for glass depth */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .logo {
@@ -122,11 +180,14 @@ body {
   color: #1a56a0;
 }
 
+body.dark-mode .logo-res {
+  color: #6ab0ff;
+}
+
 .logo-q {
   color: #F90404;
 }
 
-/* Desktop Navigation */
 .nav-links {
   display: flex;
   align-items: center;
@@ -138,22 +199,20 @@ body {
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  color: #000000;
+  color: var(--text-main);
   padding: 8px 18px;
   border-radius: 40px;
   transition: all 0.3s ease;
 }
 
 .nav-links li a:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(116, 180, 249, 0.67);
   transform: translateY(-2px);
-  backdrop-filter: blur(4px);
 }
 
 .nav-links li.active a {
-  background: rgba(59, 143, 234, 0.5);
+  background: rgba(59, 143, 234, 0.67);
   font-weight: 600;
-  backdrop-filter: blur(4px);
 }
 
 .btn-signin {
@@ -165,6 +224,11 @@ body {
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
+}
+
+body.dark-mode .btn-signin {
+  background: #ff6b6b;
+  color: #fff;
 }
 
 .btn-signin:hover {
@@ -188,7 +252,7 @@ body {
 .hamburger-menu span {
   width: 25px;
   height: 3px;
-  background: #1a56a0;
+  background: var(--text-main);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
@@ -206,17 +270,15 @@ body {
     width: 85%;
     max-width: 300px;
     height: auto;
-    /* Strong glass effect for mobile menu */
-    background: rgba(96, 162, 234, 0.92);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
     flex-direction: column;
     padding: 20px;
-    border-radius: 24px;
+    border-radius: 20px;
     transition: left 0.3s ease;
     z-index: 999;
     gap: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
@@ -233,26 +295,6 @@ body {
     padding: 12px 20px;
     font-size: 16px;
     text-align: center;
-    color: #000000;
-    font-weight: 500;
-    border-radius: 40px;
-  }
-
-  .nav-links li a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(4px);
-  }
-
-  .navbar {
-    padding: 8px 20px;
-    background: rgba(96, 162, 234, 0.35);
-    backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.45);
-  }
-
-  .btn-signin {
-    padding: 6px 20px;
-    font-size: 14px;
   }
 }
 
@@ -289,7 +331,7 @@ body {
   font-size: clamp(36px, 7vw, 64px);
   font-weight: 400;
   line-height: 1.2;
-  color: #000000;
+  color: var(--text-main);
   margin-bottom: 20px;
   animation: fadeInUp 0.8s ease 0.1s both;
 }
@@ -297,7 +339,7 @@ body {
 .hero-desc {
   font-size: clamp(15px, 2.5vw, 18px);
   font-weight: 400;
-  color: #3F3C3C;
+  color: var(--text-light);
   max-width: 900px;
   line-height: 1.6;
   margin-bottom: 40px;
@@ -314,7 +356,7 @@ body {
 }
 
 .btn-primary {
-  background: #1075C7;
+  background: var(--btn-primary);
   color: #FFFFFF;
   padding: 12px 32px;
   border-radius: 50px;
@@ -327,7 +369,7 @@ body {
 }
 
 .btn-primary:hover {
-  background: #05213F;
+  background: var(--btn-primary-hover);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
@@ -335,13 +377,18 @@ body {
 .btn-outline {
   background: rgba(203, 214, 225, 0.9);
   border: 1.5px solid rgba(30, 50, 100, 0.25);
-  color: #1a1a2e;
+  color: var(--text-main);
   padding: 12px 32px;
   border-radius: 50px;
   font-size: clamp(14px, 2vw, 16px);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+}
+
+body.dark-mode .btn-outline {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
 
 .btn-outline:hover {
@@ -358,7 +405,7 @@ body {
   cursor: pointer;
   margin-bottom: 40px;
   font-size: 14px;
-  color: #5D5858;
+  color: var(--text-light);
   font-weight: 400;
   animation: bounce 2s ease-in-out infinite;
 }
@@ -366,7 +413,7 @@ body {
 .scroll-hint svg {
   width: 18px;
   height: 18px;
-  color: #5D5858;
+  color: var(--text-light);
 }
 
 .hero-stats {
@@ -392,20 +439,20 @@ body {
 .stat-num {
   font-size: clamp(24px, 4vw, 32px);
   font-weight: 700;
-  color: #32393F;
+  color: var(--text-main);
   line-height: 1;
 }
 
 .stat-label {
   font-size: clamp(13px, 2vw, 16px);
-  color: #32393F;
+  color: var(--text-light);
   margin-top: 6px;
 }
 
 .stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--border-light);
 }
 
 /* ───────────────────────────────────────────────────────
@@ -421,7 +468,7 @@ body {
   font-size: clamp(24px, 4.5vw, 38px);
   font-weight: 700;
   line-height: 1.3;
-  color: #000000;
+  color: var(--text-main);
   margin-bottom: 24px;
   max-width: 900px;
   margin-left: auto;
@@ -430,7 +477,7 @@ body {
 
 .problem-desc {
   font-size: clamp(14px, 2vw, 17px);
-  color: #000000;
+  color: var(--text-light);
   line-height: 1.6;
   font-weight: 400;
   max-width: 1000px;
@@ -441,7 +488,7 @@ body {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  background: #FBE1E1;
+  background: var(--card-bg-light);
   border-radius: 60px;
   padding: 20px 50px;
   margin-bottom: 60px;
@@ -462,13 +509,13 @@ body {
 
 .pill-text {
   font-size: clamp(14px, 2vw, 18px);
-  color: #000000;
+  color: var(--text-main);
   margin-top: 8px;
   max-width: 450px;
 }
 
 .steps-box {
-  background: #FBE1E1;
+  background: var(--card-bg-light);
   border-radius: 30px;
   padding: 40px 30px;
   margin: 0 auto;
@@ -479,7 +526,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(24px, 4vw, 38px);
   font-weight: 700;
-  color: #000000;
+  color: var(--text-main);
   margin-bottom: 40px;
 }
 
@@ -514,14 +561,14 @@ body {
 
 .step-item h4 {
   font-size: clamp(18px, 2.8vw, 24px);
-  color: #000000;
+  color: var(--text-main);
   font-weight: 700;
   margin-bottom: 10px;
 }
 
 .step-item p {
   font-size: clamp(13px, 2vw, 16px);
-  color: #000000;
+  color: var(--text-light);
   font-weight: 400;
   line-height: 1.5;
 }
@@ -530,7 +577,7 @@ body {
    FEATURES SECTION
 ─────────────────────────────────────────────────────── */
 .features-section {
-  background: #fff;
+  background: var(--card-bg-light);
   padding: 70px 20px;
   text-align: center;
 }
@@ -544,7 +591,7 @@ body {
 }
 
 .feature-card {
-  background: #CCD7E2;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 28px 24px;
   text-align: center;
@@ -564,13 +611,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1a1a2e;
+  color: var(--text-main);
 }
 
 .feature-icon svg {
   width: 50px;
   height: 50px;
-  stroke: #1a1a2e;
+  stroke: var(--text-main);
 }
 
 .sos-icon {
@@ -591,12 +638,12 @@ body {
   font-size: clamp(20px, 3vw, 26px);
   font-weight: 700;
   margin-bottom: 12px;
-  color: #1a1a2e;
+  color: var(--text-main);
 }
 
 .feature-card p {
   font-size: clamp(13px, 1.8vw, 15px);
-  color: #000000;
+  color: var(--text-light);
   line-height: 1.5;
 }
 
@@ -604,7 +651,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #FBE1E1;
+  background: var(--card-bg);
   border-radius: 60px;
   max-width: 1100px;
   margin: 0 auto;
@@ -621,12 +668,12 @@ body {
   display: block;
   font-size: clamp(24px, 3.5vw, 32px);
   font-weight: 700;
-  color: #32393F;
+  color: var(--text-main);
 }
 
 .f-stat-label {
   font-size: clamp(13px, 2vw, 16px);
-  color: #32393F;
+  color: var(--text-light);
   margin-top: 5px;
 }
 
@@ -668,7 +715,7 @@ body {
   margin: 0 auto 15px;
   overflow: hidden;
   border: 3px solid #e03030;
-  background: #f5f5f5;
+  background: var(--card-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -684,7 +731,7 @@ body {
   font-size: clamp(16px, 2vw, 20px);
   font-weight: 700;
   margin-bottom: 5px;
-  color: #1a1a2e;
+  color: var(--text-main);
 }
 
 .team-card p {
@@ -697,7 +744,7 @@ body {
    FAQ SECTION
 ─────────────────────────────────────────────────────── */
 .faq-section {
-  background: #fff;
+  background: var(--card-bg-light);
   padding: 70px 20px;
 }
 
@@ -710,7 +757,7 @@ body {
 }
 
 .faq-item {
-  background: #FBE1E1;
+  background: var(--card-bg);
   border-radius: 20px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -731,14 +778,14 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(14px, 2vw, 17px);
   font-weight: 500;
-  color: #000000;
+  color: var(--text-main);
   text-align: left;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .faq-question:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .faq-arrow {
@@ -747,7 +794,7 @@ body {
   flex-shrink: 0;
   margin-left: 16px;
   transition: transform 0.3s ease;
-  color: #555;
+  color: var(--text-light);
 }
 
 .faq-item.open .faq-arrow {
@@ -768,7 +815,7 @@ body {
 
 .faq-answer p {
   font-size: clamp(13px, 1.8vw, 15px);
-  color: #444;
+  color: var(--text-light);
   line-height: 1.6;
 }
 
@@ -776,7 +823,7 @@ body {
    CONTACT SECTION
 ─────────────────────────────────────────────────────── */
 .contact-section {
-  background: #fff;
+  background: var(--card-bg-light);
   padding: 70px 20px;
   text-align: center;
 }
@@ -791,6 +838,10 @@ body {
   transition: transform 0.3s ease;
 }
 
+body.dark-mode .contact-card {
+  background: rgba(30, 42, 74, 0.95);
+}
+
 .contact-card:hover {
   transform: translateY(-4px);
 }
@@ -798,13 +849,13 @@ body {
 .contact-card h3 {
   font-size: clamp(24px, 4vw, 36px);
   font-weight: 700;
-  color: #000000;
+  color: var(--text-main);
   margin-bottom: 16px;
 }
 
 .contact-card>p {
   font-size: clamp(15px, 2.5vw, 18px);
-  color: #323232;
+  color: var(--text-light);
   margin-bottom: 35px;
   line-height: 1.5;
 }
@@ -820,7 +871,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #1075C7;
+  background: var(--btn-primary);
   color: #FFFFFF;
   padding: 12px 30px;
   border-radius: 50px;
@@ -836,7 +887,7 @@ body {
 }
 
 .btn-partner:hover {
-  background: #0a5a9e;
+  background: var(--btn-primary-hover);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
@@ -845,14 +896,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #CBD6E1;
-  color: #000000;
+  background: rgba(203, 214, 225, 0.9);
+  color: var(--text-main);
   padding: 12px 30px;
   border-radius: 50px;
   font-size: clamp(14px, 2vw, 16px);
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
+}
+
+body.dark-mode .btn-newsletter {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
 
 .btn-newsletter svg {
@@ -865,11 +921,15 @@ body {
   transform: translateY(-3px);
 }
 
+body.dark-mode .btn-newsletter:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 /* ───────────────────────────────────────────────────────
    FOOTER
 ─────────────────────────────────────────────────────── */
 .footer {
-  background: #252525;
+  background: var(--footer-bg);
   color: #ccc;
   padding: 50px 60px 35px;
 }
@@ -1023,10 +1083,6 @@ body {
     padding: 18px 40px;
     gap: 35px;
   }
-
-  .steps-box {
-    padding: 35px 25px;
-  }
 }
 
 /* Mobile */
@@ -1038,9 +1094,6 @@ body {
 
   .navbar {
     padding: 8px 16px;
-    background: rgba(96, 162, 234, 0.4);
-    backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
   .logo-icon {
@@ -1056,15 +1109,6 @@ body {
     padding: 80px 16px 40px;
   }
 
-  .hero-buttons {
-    gap: 12px;
-  }
-
-  .btn-primary,
-  .btn-outline {
-    padding: 10px 24px;
-  }
-
   .hero-stats {
     flex-direction: column;
     gap: 12px;
@@ -1077,16 +1121,8 @@ body {
     height: 1px;
   }
 
-  .stat-pill {
-    padding: 18px 30px;
-  }
-
   .steps-box {
     padding: 25px 18px;
-  }
-
-  .steps-grid {
-    gap: 25px;
   }
 
   .features-section,
@@ -1110,10 +1146,6 @@ body {
 
   .team-grid {
     gap: 30px;
-  }
-
-  .team-grid-row2 {
-    margin-top: 25px;
   }
 
   .team-card {
@@ -1145,10 +1177,6 @@ body {
     flex-direction: column;
     gap: 25px;
   }
-
-  .footer-links {
-    gap: 25px;
-  }
 }
 
 /* Small Mobile */
@@ -1161,22 +1189,12 @@ body {
     font-size: 13px;
   }
 
-  .hero-badge {
-    font-size: 11px;
-    padding: 4px 14px;
-  }
-
   .section-heading {
     font-size: 22px;
-    margin-bottom: 30px;
   }
 
   .problem-heading {
     font-size: 22px;
-  }
-
-  .problem-desc {
-    font-size: 13px;
   }
 
   .step-circle {
@@ -1185,24 +1203,8 @@ body {
     font-size: 30px;
   }
 
-  .step-item h4 {
-    font-size: 18px;
-  }
-
-  .step-item p {
-    font-size: 12px;
-  }
-
   .feature-card {
     padding: 20px 18px;
-  }
-
-  .feature-card h4 {
-    font-size: 18px;
-  }
-
-  .feature-card p {
-    font-size: 12px;
   }
 
   .faq-question {
@@ -1210,40 +1212,8 @@ body {
     font-size: 13px;
   }
 
-  .faq-item.open .faq-answer {
-    padding: 0 18px 16px;
-  }
-
-  .faq-answer p {
-    font-size: 12px;
-  }
-
   .contact-card {
     padding: 25px 20px;
-  }
-
-  .contact-card h3 {
-    font-size: 22px;
-  }
-
-  .contact-card>p {
-    font-size: 13px;
-  }
-}
-
-/* Landscape Mode */
-@media (max-height: 600px) and (orientation: landscape) {
-  .hero {
-    min-height: auto;
-    padding: 70px 16px 30px;
-  }
-
-  .hero-stats {
-    padding: 12px 25px;
-  }
-
-  .steps-box {
-    padding: 20px 18px;
   }
 }
 
@@ -1254,8 +1224,6 @@ body {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
