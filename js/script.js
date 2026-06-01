@@ -1,446 +1,389 @@
-// ═══════════════════════════════════════════
-//   ResQ Home Page — script.js
-// ═══════════════════════════════════════════
-
-// ── Scroll down button ──
-const scrollBtn = document.getElementById('scrollBtn');
-if (scrollBtn) {
-  scrollBtn.addEventListener('click', function () {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-  });
-}
-
-// ── Active nav link on click ──
-const navItems = document.querySelectorAll('.nav-links li');
-navItems.forEach(function (item) {
-  item.addEventListener('click', function () {
-    navItems.forEach(el => el.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
-
-// ── Active nav link on scroll ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links li a');
-
-window.addEventListener('scroll', function () {
-  let current = '';
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 120) {
-      current = section.getAttribute('id');
-    }
-  });
-  navLinks.forEach(link => {
-    link.parentElement.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.parentElement.classList.add('active');
-    }
-  });
-});
-
-// ── FAQ Accordion ──
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(function (item) {
-  const btn = item.querySelector('.faq-question');
-  btn.addEventListener('click', function () {
-    const isOpen = item.classList.contains('open');
-    // Close all
-    faqItems.forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-    });
-    // Open clicked if it was closed
-    if (!isOpen) {
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-// ── Entrance animations on scroll ──
-const animTargets = document.querySelectorAll(
-  '.feature-card, .step-item, .team-card, .faq-item, .hero-stats, .stat-pill, .steps-box, .contact-card'
-);
-
-const observer = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-animTargets.forEach(function (el, i) {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(28px)';
-  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-  el.style.transitionDelay = (i % 6) * 0.08 + 's';
-  observer.observe(el);
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.visible, [style*="opacity"]').forEach(el => {
-    if (!el.classList.contains('visible')) return;
-    el.style.opacity = '1';
-    el.style.transform = 'translateY(0)';
-  });
-});
-
-// visible class triggers animation
-const style = document.createElement('style');
-style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
-document.head.appendChild(style);
-
-// ── Hero elements entrance on load ──
-window.addEventListener('load', function () {
-  const heroEls = [
-    document.querySelector('.hero-badge'),
-    document.querySelector('.hero-title'),
-    document.querySelector('.hero-desc'),
-    document.querySelector('.hero-buttons'),
-    document.querySelector('.scroll-hint'),
-    document.querySelector('.hero-stats'),
-  ];
-  heroEls.forEach(function (el, i) {
-    if (!el) return;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(22px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    el.style.transitionDelay = (i * 0.12) + 's';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    }));
-  });
-});// ═══════════════════════════════════════════
-//   ResQ Home Page — script.js
-// ═══════════════════════════════════════════
-
-// ── Scroll down button ──
-const scrollBtn = document.getElementById('scrollBtn');
-if (scrollBtn) {
-  scrollBtn.addEventListener('click', function () {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-  });
-}
-
-// ── Active nav link on click ──
-const navItems = document.querySelectorAll('.nav-links li');
-navItems.forEach(function (item) {
-  item.addEventListener('click', function () {
-    navItems.forEach(el => el.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
-
-// ── Active nav link on scroll ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links li a');
-
-window.addEventListener('scroll', function () {
-  let current = '';
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 120) {
-      current = section.getAttribute('id');
-    }
-  });
-  navLinks.forEach(link => {
-    link.parentElement.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) {
-      link.parentElement.classList.add('active');
-    }
-  });
-});
-
-// ── FAQ Accordion ──
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(function (item) {
-  const btn = item.querySelector('.faq-question');
-  btn.addEventListener('click', function () {
-    const isOpen = item.classList.contains('open');
-    // Close all
-    faqItems.forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-    });
-    // Open clicked if it was closed
-    if (!isOpen) {
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-// ── Entrance animations on scroll ──
-const animTargets = document.querySelectorAll(
-  '.feature-card, .step-item, .team-card, .faq-item, .hero-stats, .stat-pill, .steps-box, .contact-card'
-);
-
-const observer = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-animTargets.forEach(function (el, i) {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(28px)';
-  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-  el.style.transitionDelay = (i % 6) * 0.08 + 's';
-  observer.observe(el);
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.visible, [style*="opacity"]').forEach(el => {
-    if (!el.classList.contains('visible')) return;
-    el.style.opacity = '1';
-    el.style.transform = 'translateY(0)';
-  });
-});
-
-// visible class triggers animation
-const style = document.createElement('style');
-style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
-document.head.appendChild(style);
-
-// ── Hero elements entrance on load ──
-window.addEventListener('load', function () {
-  const heroEls = [
-    document.querySelector('.hero-badge'),
-    document.querySelector('.hero-title'),
-    document.querySelector('.hero-desc'),
-    document.querySelector('.hero-buttons'),
-    document.querySelector('.scroll-hint'),
-    document.querySelector('.hero-stats'),
-  ];
-  heroEls.forEach(function (el, i) {
-    if (!el) return;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(22px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    el.style.transitionDelay = (i * 0.12) + 's';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    }));
-  });
-});
-// ═══════════════════════════════════════════
-//   ResQ Services Page — services.js
-// ═══════════════════════════════════════════
-
-// ── Active nav on click ──
-const navItems = document.querySelectorAll('.nav-links li');
-navItems.forEach(function (item) {
-  item.addEventListener('click', function () {
-    navItems.forEach(el => el.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
-
-// ── Scroll-triggered entrance animations ──
-const animTargets = document.querySelectorAll(
-  '.product-card, .hiw-card, .dashboard-card, .bfi-content, .bfi-image, .cta-card'
-);
-
-const style = document.createElement('style');
-style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
-document.head.appendChild(style);
-
-const observer = new IntersectionObserver(function (entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-animTargets.forEach(function (el, i) {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(28px)';
-  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-  el.style.transitionDelay = (i % 5) * 0.1 + 's';
-  observer.observe(el);
-});
-
-// ── Hero entrance on load ──
-window.addEventListener('load', function () {
-  const heroEls = [
-    document.querySelector('.s-hero-badge'),
-    document.querySelector('.s-hero-title'),
-    document.querySelector('.s-hero-desc'),
-  ];
-  heroEls.forEach(function (el, i) {
-    if (!el) return;
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(22px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    el.style.transitionDelay = (i * 0.15) + 's';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    }));
-  });
-});
-
-/* ─────────────────────────────────────────────
-   ResQ About Page — script.js
-───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════
+   ResQ Home Page — Complete JavaScript
+   Smooth Scroll | Animations | Counters | Mobile Menu
+════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* 1. SCROLL REVEAL
-  ─────────────────────────────────────────── */
-  const reveals = document.querySelectorAll('.reveal');
+  /* ═══════════════════════════════════════════════════════
+     1. MOBILE HAMBURGER MENU
+     ══════════════════════════════════════════════════════ */
+  const navbar = document.querySelector('.navbar');
+  const navLinks = document.querySelector('.nav-links');
+  const hamburger = document.createElement('button');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+  // Only add hamburger on mobile
+  if (window.innerWidth <= 768) {
+    hamburger.className = 'hamburger-menu';
+    hamburger.innerHTML = `
+      <span></span>
+      <span></span>
+      <span></span>
+    `;
 
-  reveals.forEach(el => observer.observe(el));
-
-  /* Stagger children inside grid containers */
-  document.querySelectorAll('.mv-grid, .stats-grid, .footer-top').forEach(grid => {
-    [...grid.children].forEach((child, i) => {
-      child.style.transitionDelay = (i * 0.13) + 's';
-    });
-  });
-
-
-  /* 2. NAVBAR — shrink on scroll + active link highlight
-  ─────────────────────────────────────────── */
-  const navEl = document.querySelector('nav');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navEl.style.padding = '10px 40px';
-    } else {
-      navEl.style.padding = '18px 40px';
-    }
-  }, { passive: true });
-
-  /* Highlight nav link for current section */
-  const sections  = document.querySelectorAll('section[id], div[id]');
-  const navLinks  = document.querySelectorAll('.nav-links a');
-
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => link.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-
-  sections.forEach(sec => sectionObserver.observe(sec));
-
-
-  /* 3. SMOOTH ANCHOR SCROLL
-  ─────────────────────────────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        const offset = 90; // nav height
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-
-
-  /* 4. STAT COUNTER ANIMATION
-  ─────────────────────────────────────────── */
-  function animateCounter(el, target, duration = 1800) {
-    const isPercent  = target.includes('%');
-    const isComma    = target.includes(',');
-    const rawNum     = parseFloat(target.replace(/[^0-9.]/g, ''));
-    const start      = performance.now();
-
-    function step(now) {
-      const elapsed  = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-      const current  = Math.floor(eased * rawNum);
-
-      if (isComma) {
-        el.textContent = current.toLocaleString('en-IN');
-      } else if (isPercent) {
-        el.textContent = current + '%';
-      } else {
-        el.textContent = current;
-      }
-
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target; // ensure exact final value
+    // Insert hamburger before nav-links
+    const navbarWrapper = document.querySelector('.navbar');
+    if (navbarWrapper && !document.querySelector('.hamburger-menu')) {
+      navbarWrapper.insertBefore(hamburger, navLinks);
     }
 
-    requestAnimationFrame(step);
+    // Toggle menu on click
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target) && navLinks.classList.contains('mobile-active')) {
+        navLinks.classList.remove('mobile-active');
+      }
+    });
+
+    // Close menu when clicking on a link
+    const allLinks = document.querySelectorAll('.nav-links a');
+    allLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-active');
+      });
+    });
   }
 
-  const statPills = document.querySelectorAll('.stat-pill');
+  /* ═══════════════════════════════════════════════════════
+     2. SCROLL REVEAL ANIMATION
+     ══════════════════════════════════════════════════════ */
+  const revealElements = document.querySelectorAll('.feature-card, .step-item, .team-card, .stat-pill, .contact-card');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  revealElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+    revealObserver.observe(el);
+  });
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .reveal-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  /* ═══════════════════════════════════════════════════════
+     3. NAVBAR SHRINK ON SCROLL + ACTIVE LINK
+     ══════════════════════════════════════════════════════ */
+  const navbarEl = document.querySelector('.navbar');
+  const navLinksEl = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section');
+
+  // Shrink navbar on scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbarEl.style.padding = '8px 20px';
+    } else {
+      navbarEl.style.padding = '10px 24px';
+    }
+  });
+
+  // Active link highlight on scroll
+  function updateActiveLink() {
+    let current = '';
+    const scrollPosition = window.scrollY + 150;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinksEl.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').substring(1);
+      if (href === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink);
+  updateActiveLink();
+
+  /* ═══════════════════════════════════════════════════════
+     4. SMOOTH SCROLL FOR ANCHOR LINKS
+     ══════════════════════════════════════════════════════ */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+
+      if (targetId === '#') return;
+
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+
+        history.pushState(null, null, targetId);
+      }
+    });
+  });
+
+  /* ═══════════════════════════════════════════════════════
+     5. SCROLL BUTTON (Hero Section)
+     ══════════════════════════════════════════════════════ */
+  const scrollBtn = document.getElementById('scrollBtn');
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', () => {
+      const problemSection = document.getElementById('problem');
+      if (problemSection) {
+        const offset = 80;
+        const targetPosition = problemSection.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     6. STAT COUNTER ANIMATION
+     ══════════════════════════════════════════════════════ */
+  function animateCounter(element, targetValue, suffix = '') {
+    let start = 0;
+    const duration = 2000;
+    const increment = targetValue / (duration / 16);
+
+    function updateCounter() {
+      start += increment;
+      if (start < targetValue) {
+        element.textContent = Math.floor(start) + suffix;
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = targetValue + suffix;
+      }
+    }
+
+    updateCounter();
+  }
+
   const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const el     = entry.target;
-        const target = el.dataset.target;
-        animateCounter(el, target);
-        statObserver.unobserve(el);
+        const element = entry.target;
+        const text = element.textContent;
+
+        const match = text.match(/(\d+)(\+?)/);
+        if (match) {
+          const targetNum = parseInt(match[1]);
+          const suffix = match[2] || '';
+
+          element.textContent = '0' + suffix;
+          animateCounter(element, targetNum, suffix);
+        }
+
+        statObserver.unobserve(element);
       }
     });
   }, { threshold: 0.5 });
 
-  statPills.forEach(pill => statObserver.observe(pill));
+  document.querySelectorAll('.stat-num, .f-stat-num, .pill-num').forEach(el => {
+    statObserver.observe(el);
+  });
 
+  /* ═══════════════════════════════════════════════════════
+     7. FAQ ACCORDION
+     ══════════════════════════════════════════════════════ */
+  const faqItems = document.querySelectorAll('.faq-item');
 
-  /* 5. BUTTON RIPPLE EFFECT
-  ─────────────────────────────────────────── */
-  document.querySelectorAll('.btn-primary, .btn-cta-primary, .btn-cta-outline').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      const circle = document.createElement('span');
-      const rect   = this.getBoundingClientRect();
-      const size   = Math.max(rect.width, rect.height);
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
 
-      circle.style.cssText = `
-        position: absolute;
-        width: ${size}px; height: ${size}px;
-        left: ${e.clientX - rect.left - size / 2}px;
-        top:  ${e.clientY - rect.top  - size / 2}px;
-        background: rgba(255,255,255,.3);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple .55s ease-out forwards;
-        pointer-events: none;
-      `;
+    question.addEventListener('click', () => {
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item && otherItem.classList.contains('open')) {
+          otherItem.classList.remove('open');
+          const otherButton = otherItem.querySelector('.faq-question');
+          if (otherButton) {
+            otherButton.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
 
-      /* make btn relative if not already */
-      const pos = getComputedStyle(this).position;
-      if (pos === 'static') this.style.position = 'relative';
-      this.style.overflow = 'hidden';
-
-      this.appendChild(circle);
-      circle.addEventListener('animationend', () => circle.remove());
+      item.classList.toggle('open');
+      const isExpanded = item.classList.contains('open');
+      question.setAttribute('aria-expanded', isExpanded);
     });
   });
 
-  /* Inject ripple keyframe once */
-  if (!document.getElementById('ripple-style')) {
-    const style = document.createElement('style');
-    style.id = 'ripple-style';
-    style.textContent = `@keyframes ripple { to { transform: scale(2.5); opacity: 0; } }`;
-    document.head.appendChild(style);
+  /* ═══════════════════════════════════════════════════════
+     8. BUTTON RIPPLE EFFECT
+     ══════════════════════════════════════════════════════ */
+  const rippleButtons = document.querySelectorAll('.btn-primary, .btn-outline, .btn-partner, .btn-newsletter, .btn-signin');
+
+  rippleButtons.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple-effect';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+
+      this.style.position = 'relative';
+      this.style.overflow = 'hidden';
+
+      this.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+  });
+
+  const rippleStyle = document.createElement('style');
+  rippleStyle.textContent = `
+    .ripple-effect {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple-animation 0.6s ease-out;
+      pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(rippleStyle);
+
+  /* ═══════════════════════════════════════════════════════
+     9. BUTTON ALERTS
+     ══════════════════════════════════════════════════════ */
+  const signinBtn = document.getElementById('signinBtn');
+  if (signinBtn) {
+    signinBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Sign In feature coming soon.\n\nResQ is currently in pilot phase.');
+    });
   }
+
+  const partnerBtn = document.getElementById('partnerBtn');
+  if (partnerBtn) {
+    partnerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Partner with ResQ\n\nJoin us in making Indian roads safer.');
+    });
+  }
+
+  const newsletterBtn = document.getElementById('newsletterBtn');
+  if (newsletterBtn) {
+    newsletterBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Join Newsletter\n\nStay updated with ResQ news and launches.');
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     10. SCROLL TO TOP BUTTON
+     ══════════════════════════════════════════════════════ */
+  const scrollTopBtn = document.createElement('button');
+  scrollTopBtn.innerHTML = '↑';
+  scrollTopBtn.className = 'scroll-top-btn';
+  scrollTopBtn.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: #1075C7;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  `;
+
+  document.body.appendChild(scrollTopBtn);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      scrollTopBtn.style.opacity = '1';
+      scrollTopBtn.style.visibility = 'visible';
+    } else {
+      scrollTopBtn.style.opacity = '0';
+      scrollTopBtn.style.visibility = 'hidden';
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  /* ═══════════════════════════════════════════════════════
+     11. RESIZE HANDLER (For mobile menu on orientation change)
+     ══════════════════════════════════════════════════════ */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      if (navLinks) {
+        navLinks.classList.remove('mobile-active');
+      }
+      const existingHamburger = document.querySelector('.hamburger-menu');
+      if (existingHamburger) {
+        existingHamburger.remove();
+      }
+    } else {
+      if (!document.querySelector('.hamburger-menu') && navbar && navLinks) {
+        const newHamburger = document.createElement('button');
+        newHamburger.className = 'hamburger-menu';
+        newHamburger.innerHTML = `<span></span><span></span><span></span>`;
+        navbar.insertBefore(newHamburger, navLinks);
+
+        newHamburger.addEventListener('click', () => {
+          navLinks.classList.toggle('mobile-active');
+        });
+      }
+    }
+  });
+
+  /* ═══════════════════════════════════════════════════════
+     12. CONSOLE LOG
+     ══════════════════════════════════════════════════════ */
+  console.log('ResQ Website Loaded ✅');
+  console.log('Features: Mobile Menu | Smooth Scroll | Counter Animation | FAQ Accordion');
 
 });
