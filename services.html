@@ -3,20 +3,25 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ResQ – Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ResQ – Services | Emergency Response Solutions</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/services.css" />
 </head>
 
 <body>
 
-  <!-- ══ NAVBAR ══ -->
+  <!-- ============================================
+       NAVBAR (Same as home & about pages)
+  ============================================ -->
   <div class="navbar-wrapper">
     <nav class="navbar">
       <a href="index.html" class="logo">
@@ -31,69 +36,72 @@
         <li><a href="home.html">Home</a></li>
         <li class="active"><a href="services.html">Services</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
-      <a href="#" class="btn-signin">Sign in</a>
+      <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+      <a href="#" class="btn-signin" id="signinBtn">Sign In</a>
     </nav>
   </div>
 
-  <!-- ══ HERO ══ -->
-  <section class="s-hero">
-    <div class="s-hero-badge">What We Build</div>
-    <h1 class="s-hero-title">
+  <!-- ============================================
+       HERO SECTION (Same as home page style)
+  ============================================ -->
+  <section class="services-hero">
+    <div class="services-hero-badge">What We Build</div>
+    <h1 class="services-hero-title">
       One platform.<br>
-      Three powerful layers.<br><br>
-      Zero delay in<br>
-      emergency response.
+      Three powerful layers.<br>
+      Zero delay in emergency response.
     </h1>
-    <p class="s-hero-desc">
-      ResQ combines a consumer mobile app, an enterprise web dashboard, and an optional in-vehicle hardware module<br>
+    <p class="services-hero-desc">
+      ResQ combines a consumer mobile app, an enterprise web dashboard, and an optional in-vehicle hardware module
       all working together to save lives on Indian roads.
     </p>
   </section>
 
-  <!-- ══ PRODUCTS ══ -->
-  <section class="products-section" id="products">
+  <!-- ============================================
+       PRODUCTS SECTION (Same card style as features)
+  ============================================ -->
+  <section class="services-products" id="products">
     <p class="section-tag">PRODUCTS</p>
-    <h2 class="section-heading-left">Three products. One mission.</h2>
+    <h2 class="section-heading">Three products. One mission.</h2>
 
-    <div class="products-grid">
-
+    <div class="services-products-grid">
       <!-- ResQ Mobile -->
-      <div class="product-card">
-        <div class="product-icon">
+      <div class="service-card">
+        <div class="service-icon">
           <img src="assets/mobile-app.png" alt="ResQ Mobile" />
         </div>
         <h3>ResQ Mobile</h3>
-        <p class="product-desc">Emergency response in your pocket. A lightweight, privacy-first app that turns any
+        <p class="service-desc">Emergency response in your pocket. A lightweight, privacy-first app that turns any
           smartphone into a personal safety beacon.</p>
-        <ul class="product-features">
+        <ul class="service-features">
           <li>One-tap SOS — no forms, no typing</li>
           <li>Automatic crash detection</li>
           <li>Real-time location sharing</li>
           <li>Works on low internet</li>
         </ul>
-        <div class="product-tags">
+        <div class="service-tags">
           <span class="tag">iOS</span>
           <span class="tag">Android</span>
         </div>
       </div>
 
       <!-- ResQ Command Center -->
-      <div class="product-card">
-        <div class="product-icon">
+      <div class="service-card">
+        <div class="service-icon">
           <img src="assets/interface-control.png" alt="ResQ Command Center" />
         </div>
-        <h3>ResQ<br>Command Center</h3>
-        <p class="product-desc">A dashboard that turns data into action. Built for police control rooms, ambulance
+        <h3>ResQ Command Center</h3>
+        <p class="service-desc">A dashboard that turns data into action. Built for police control rooms, ambulance
           dispatch hubs, and traffic authorities.</p>
-        <ul class="product-features">
+        <ul class="service-features">
           <li>Live accident alerts on map</li>
-          <li>Victim location &amp; crash details</li>
+          <li>Victim location & crash details</li>
           <li>One-click dispatch to victim location</li>
-          <li>Historical data &amp; analytics</li>
+          <li>Historical data & analytics</li>
         </ul>
-        <div class="product-tags">
+        <div class="service-tags">
           <span class="tag">Government</span>
           <span class="tag">Enterprise</span>
           <span class="tag">Hospitals</span>
@@ -101,111 +109,126 @@
       </div>
 
       <!-- ResQ Edge -->
-      <div class="product-card">
-        <div class="product-icon">
+      <div class="service-card">
+        <div class="service-icon">
           <img src="assets/safe-and-stable.png" alt="ResQ Edge" />
         </div>
         <h3>ResQ Edge</h3>
-        <p class="product-desc">Crash detection that works even when the phone doesn't. An affordable hardware module
+        <p class="service-desc">Crash detection that works even when the phone doesn't. An affordable hardware module
           for any vehicle.</p>
-        <ul class="product-features">
+        <ul class="service-features">
           <li>Real-time crash detection</li>
-          <li>Bluetooth + WiFi</li>
+          <li>Bluetooth + WiFi connectivity</li>
           <li>Battery backup for independent operation</li>
           <li>Works with existing vehicles</li>
         </ul>
-        <div class="product-tags">
+        <div class="service-tags">
           <span class="tag">Commercial Vehicles</span>
           <span class="tag">Fleet Operators</span>
-          <span class="tag">Personal vehicles</span>
+          <span class="tag">Personal Vehicles</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ══ DASHBOARD ══ -->
-  <section class="dashboard-section" id="dashboard">
-    <div class="dashboard-card">
-      <p class="section-tag-center">DASHBOARD</p>
+  <!-- ============================================
+       DASHBOARD SECTION (Same as contact card style)
+  ============================================ -->
+  <section class="services-dashboard" id="dashboard">
+    <div class="dashboard-glass-card">
+      <p class="section-tag">DASHBOARD</p>
       <h2 class="dashboard-title">ResQ Command Center</h2>
-      <div class="dashboard-monitor">
+      <div class="dashboard-preview">
         <img src="assets/machine-vision.png" alt="ResQ Dashboard" />
       </div>
-      <p class="dashboard-features">Real-time accident alerts · Victim location tracking · Service dispatch system</p>
-      <a href="#" class="btn-dashboard">Click Here to Open dashboard →]</a>
+      <p class="dashboard-desc">Real-time accident alerts · Victim location tracking · Service dispatch system</p>
+      <a href="#" class="btn-dashboard" id="dashboardBtn">Open Dashboard →</a>
     </div>
   </section>
 
-  <!-- ══ HOW IT WORKS ══ -->
-  <section class="hiw-section" id="how-it-works">
-    <p class="section-tag-left">HOW IT WORKS</p>
-    <h2 class="section-heading-left">Three products. One seamless flow.</h2>
-    <div class="hiw-steps">
-      <div class="hiw-card">
-        <div class="hiw-circle">1</div>
+  <!-- ============================================
+       HOW IT WORKS SECTION (Same as steps on home)
+  ============================================ -->
+  <section class="services-hiw" id="how-it-works">
+    <p class="section-tag">HOW IT WORKS</p>
+    <h2 class="section-heading">Three products. One seamless flow.</h2>
+    <div class="hiw-steps-grid">
+      <div class="hiw-step-card">
+        <div class="hiw-number">1</div>
         <h4>Crash happens</h4>
         <p>ResQ Edge detects impact OR phone detects deceleration</p>
       </div>
-      <div class="hiw-card">
-        <div class="hiw-circle">2</div>
+      <div class="hiw-step-card">
+        <div class="hiw-number">2</div>
         <h4>Alert triggered</h4>
         <p>Location + timestamp sent to cloud</p>
       </div>
-      <div class="hiw-card">
-        <div class="hiw-circle">3</div>
+      <div class="hiw-step-card">
+        <div class="hiw-number">3</div>
         <h4>User confirms</h4>
         <p>30 sec cancellation window. If unconscious, auto-proceeds</p>
       </div>
-      <div class="hiw-card">
-        <div class="hiw-circle">4</div>
+      <div class="hiw-step-card">
+        <div class="hiw-number">4</div>
         <h4>Command center</h4>
         <p>Dispatcher sees alert, assigns nearest service</p>
       </div>
-      <div class="hiw-card">
-        <div class="hiw-circle">5</div>
+      <div class="hiw-step-card">
+        <div class="hiw-number">5</div>
         <h4>Rescue begins</h4>
         <p>Help is on the way</p>
       </div>
     </div>
   </section>
 
-  <!-- ══ BUILD FOR INDIA ══ -->
-  <section class="bfi-section" id="build-for-india">
-    <div class="bfi-content">
-      <p class="section-tag-left-red">BUILD FOR INDIA</p>
-      <h2 class="bfi-heading">Technology that works where it's needed most.</h2>
-      <p class="bfi-desc">
-        Most emergency systems fail when you need them the most —
-        in low-network zones, during power cuts, or when a phone is damaged.<br>
-        <strong>ResQ was built differently.</strong><br>
-        Our mobile app works on 2G and unstable networks.<br>
-        Our <strong>hardware module</strong> has battery backup and can trigger SOS even if
-        the phone is destroyed. And our dashboard is lightweight enough to
-        run on government systems without high-end infrastructure.<br>
-        We don't wait for perfect conditions. We work in the conditions India has.
-      </p>
-    </div>
-    <div class="bfi-image">
-      <div class="bfi-img-frame">
-        <img src="assets/Accident.png" alt="ResQ in action" />
-        <div class="bfi-glow"></div>
+  <!-- ============================================
+       BUILT FOR INDIA SECTION (Same as about page style)
+  ============================================ -->
+  <section class="services-bfi" id="build-for-india">
+    <div class="bfi-container">
+      <div class="bfi-content">
+        <p class="section-tag">BUILT FOR INDIA</p>
+        <h2 class="bfi-title">Technology that works where it's needed most.</h2>
+        <p class="bfi-text">
+          Most emergency systems fail when you need them the most —
+          in low-network zones, during power cuts, or when a phone is damaged.
+        </p>
+        <p class="bfi-text">
+          <strong>ResQ was built differently.</strong> Our mobile app works on 2G and unstable networks.
+          Our hardware module has battery backup and can trigger SOS even if the phone is destroyed.
+          And our dashboard is lightweight enough to run on government systems without high-end infrastructure.
+        </p>
+        <p class="bfi-text">
+          We don't wait for perfect conditions. We work in the conditions India has.
+        </p>
+      </div>
+      <div class="bfi-image-wrapper">
+        <div class="bfi-image-frame">
+          <img src="assets/Accident.png" alt="ResQ in action" />
+          <div class="bfi-glow-effect"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ CTA ══ -->
-  <section class="cta-section" id="contact">
-    <div class="cta-card">
+  <!-- ============================================
+       CTA SECTION (Same as contact section)
+  ============================================ -->
+  <section class="services-cta" id="contact">
+    <div class="cta-glass-card">
       <h2>Ready to see ResQ in action?</h2>
-      <p>Whether you're a potential user, a government partner, or an investor<br>we'd love to show you what we've
-        built.</p>
-      <div class="cta-buttons">
-        <a href="#" class="cta-btn-dark">
-          <img src="assets/Partnership with us.png" alt="Partner" />
+      <p>Whether you're a potential user, a government partner, or an investor — we'd love to show you what we've built.
+      </p>
+      <div class="cta-buttons-group">
+        <a href="#" class="btn-cta-primary" id="partnerBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M17 20h5v-2a4 4 0 00-5-4M9 20H4v-2a4 4 0 015-4m6-4a4 4 0 11-8 0 4 4 0 018 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
           Partner with Us
         </a>
-        <a href="#" class="cta-btn-light">
+        <a href="#" class="btn-cta-secondary" id="demoBtn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
             stroke-width="2">
             <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -213,7 +236,7 @@
           </svg>
           Request Demo
         </a>
-        <a href="#" class="cta-btn-light">
+        <a href="#" class="btn-cta-secondary" id="waitlistBtn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
             stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -225,7 +248,9 @@
     </div>
   </section>
 
-  <!-- ══ FOOTER ══ -->
+  <!-- ============================================
+       FOOTER (Same as all pages)
+  ============================================ -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
@@ -254,15 +279,15 @@
           <h5>LEGAL</h5>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Services</a>
-          <a href="#">Security &amp; GDPR</a>
+          <a href="#">Security</a>
         </div>
       </div>
     </div>
     <div class="footer-divider"></div>
-    <p class="footer-copy">© 2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
+    <p class="footer-copy">2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
   </footer>
 
-  <script src="css/services.js"></script>
+  <script src="js/services.js"></script>
 </body>
 
 </html>
