@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ResQ – About Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ResQ – About Us | Our Mission to Save Lives</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/about.css"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/about.css" />
 </head>
+
 <body>
 
-  <!-- ══ NAVBAR ══ -->
+  <!-- ============================================
+       NAVBAR
+  ============================================ -->
   <div class="navbar-wrapper">
     <nav class="navbar">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-icon">
-          <img src="assets/ResQ Logo.png" alt="ResQ Logo"/>
+          <img src="assets/ResQ Logo.png" alt="ResQ Logo" />
         </div>
         <span class="logo-text">
           <span class="logo-res">Res</span><span class="logo-q">Q</span>
         </span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li class="active"><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
-      <a href="#" class="btn-signin">Sign in</a>
+      <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+      <a href="#" class="btn-signin" id="signinBtn">Sign In</a>
     </nav>
   </div>
 
-  <!-- ══ HERO ══ -->
+  <!-- ============================================
+       HERO SECTION
+  ============================================ -->
   <section class="about-hero">
     <div class="about-hero-badge">Our Story</div>
     <h1 class="about-hero-title">We're on a mission to<br>make Indian roads safer</h1>
     <p class="about-hero-desc">
-      <span>ResQ was born from a simple question:</span><br>
-      <span>Why does help take so long to reach accident victims?</span><br>
-      <span>We're building the answer.</span>
+      ResQ was born from a simple question:<br>
+      Why does help take so long to reach accident victims?<br>
+      We're building the answer.
     </p>
   </section>
 
-  <!-- ══ WHO WE ARE ══ -->
+  <!-- ============================================
+       WHO WE ARE SECTION
+  ============================================ -->
   <section class="who-section" id="who">
     <div class="who-inner">
       <div class="who-content">
         <p class="section-tag-red">WHO WE ARE</p>
         <h2 class="who-heading">From an idea to a<br>life-saving movement.</h2>
         <p class="who-desc">
-          ResQ started with a simple belief — that no one should die because help didn't know where to go. Today, we're building an integrated emergency response ecosystem.<br><br>
-          Hundreds of families lose a loved one to road accidents. Most of these deaths happen not because help wasn't available — but because nobody could find it in time. <strong>ResQ changes that.</strong>
+          ResQ started with a simple belief — that no one should die because help didn't know where to go. Today, we're
+          building an integrated emergency response ecosystem.<br><br>
+          Hundreds of families lose a loved one to road accidents. Most of these deaths happen not because help wasn't
+          available — but because nobody could find it in time. <strong>ResQ changes that.</strong>
         </p>
-        <a href="#" class="btn-get-resq">Get ResQ</a>
+        <a href="#" class="btn-get-resq" id="getResqBtn">Get ResQ</a>
       </div>
       <div class="who-image">
-        <img src="assets/who we are section img.png" alt="ResQ App"/>
+        <img src="assets/who we are section img.png" alt="ResQ App" />
       </div>
     </div>
 
@@ -64,41 +81,51 @@
     <div class="mv-grid">
       <div class="mv-card mv-mission">
         <h4>Our Mission</h4>
-        <p>Turn every accident location into a live emergency signal. No victim should ever search for help. Help should find them.</p>
+        <p>Turn every accident location into a live emergency signal. No victim should ever search for help. Help should
+          find them.</p>
       </div>
       <div class="mv-card mv-vision">
         <h4>Our Vision</h4>
-        <p>An India where zero lives are lost due to delayed emergency response. A country where every road has a safety net.</p>
+        <p>An India where zero lives are lost due to delayed emergency response. A country where every road has a safety
+          net.</p>
       </div>
     </div>
   </section>
 
-  <!-- ══ THE CRISIS WE'RE SOLVING ══ -->
+    <!-- ============================================
+       CRISIS SECTION - FIXED LAYOUT
+  ============================================ -->
   <section class="crisis-section" id="crisis">
-    <p class="section-tag-red">THE CRISIS WE'RE SOLVING</p>
-    <h2 class="crisis-heading">
-      Over 1.7 lakh lives lost every year.<br>
-      Most of them preventable.
-    </h2>
-    <div class="crisis-stats">
-      <div class="crisis-stat-card">
-        <div class="crisis-pill">1,72,890</div>
-        <p>Road accident deaths<br>(2023-24)</p>
+    <div class="crisis-container">
+      <p class="section-tag-red">THE CRISIS WE'RE SOLVING</p>
+      <h2 class="crisis-heading">
+        Over 1.7 lakh lives lost every year.<br>
+        Most of them preventable.
+      </h2>
+      
+      <div class="crisis-stats">
+        <div class="crisis-stat-card">
+          <div class="crisis-pill" data-target="172890">1,72,890</div>
+          <p>Road accident deaths<br>(2023-24)</p>
+        </div>
+        <div class="crisis-stat-card">
+          <div class="crisis-pill" data-target="59">59%</div>
+          <p>Deaths due to delayed<br>rescue</p>
+        </div>
       </div>
-      <div class="crisis-stat-card">
-        <div class="crisis-pill">59%</div>
-        <p>Deaths due to delayed<br>rescue</p>
-      </div>
+      
+      <p class="crisis-desc">
+        India reports the highest number of road accident fatalities in the world. More than half of
+        these deaths occur in the "golden window" after the crash —<br>
+        when a trauma centre or ambulance is nearby but no one can locate it in time.<br>
+        ResQ closes that gap.
+      </p>
     </div>
-    <p class="crisis-desc">
-      India reports the highest number of road accident fatalities in the world. More than half of
-      these deaths occur in the "golden window" after the crash.<br>
-      when a trauma centre or ambulance is nearby but no one can locate it in time.<br>
-      ResQ closes that gap.
-    </p>
   </section>
 
-  <!-- ══ WHY WE BUILT ══ -->
+  <!-- ============================================
+       WHY WE BUILT SECTION
+  ============================================ -->
   <section class="why-section" id="why">
     <div class="why-inner">
       <div class="why-content">
@@ -128,30 +155,41 @@
       </div>
       <div class="why-image">
         <div class="why-img-frame">
-          <img src="assets/why we built section img.png" alt="Accident scene"/>
+          <img src="assets/why we built section img.png" alt="Accident scene" />
           <div class="why-glow"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ CTA ══ -->
+  <!-- ============================================
+       CTA SECTION
+  ============================================ -->
   <section class="about-cta" id="cta">
     <h2 class="cta-heading">Ready to make Indian roads safer?</h2>
     <p class="cta-desc">Whether you're a user, partner, or investor — let's talk.</p>
     <div class="cta-buttons">
-      <a href="#" class="cta-btn-primary">
-        <img src="assets/Partnership with us.png" alt="Partner"/>
+      <a href="#" class="cta-btn-primary" id="partnerBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M17 20h5v-2a4 4 0 00-5-4M9 20H4v-2a4 4 0 015-4m6-4a4 4 0 11-8 0 4 4 0 018 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
         Partner with Us
       </a>
-      <a href="#" class="cta-btn-secondary">
-        <img src="assets/request demo.png" alt="Demo"/>
+      <a href="#" class="cta-btn-secondary" id="demoBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
         Request Demo
       </a>
     </div>
   </section>
 
-  <!-- ══ FOOTER ══ -->
+  <!-- ============================================
+       FOOTER
+  ============================================ -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
@@ -180,14 +218,15 @@
           <h5>LEGAL</h5>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Services</a>
-          <a href="#">Security &amp; GDPR</a>
+          <a href="#">Security</a>
         </div>
       </div>
     </div>
     <div class="footer-divider"></div>
-    <p class="footer-copy">© 2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
+    <p class="footer-copy">2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
   </footer>
 
-  <script src="about.js"></script>
+  <script src="js/about.js"></script>
 </body>
+
 </html>
