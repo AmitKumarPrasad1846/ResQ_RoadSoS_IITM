@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>ResQ – Privacy Policy</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== DARK MODE VARIABLES ===== */
+        :root {
+            --bg-body: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
+            --text-main: #1a1a2e;
+            --text-light: #3F3C3C;
+            --card-bg: #CCD7E2;
+            --nav-bg: rgba(96, 162, 234, 0.85);
+            --footer-bg: #252525;
+            --border-light: rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode {
+            --bg-body: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
+            --text-main: #ffffff;
+            --text-light: #cccccc;
+            --card-bg: #1e2a4a;
+            --nav-bg: rgba(15, 30, 60, 0.95);
+            --footer-bg: #0a0a15;
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dark mode button */
+        .dark-mode-btn {
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px 14px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .dark-mode-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .dark-mode-btn {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Smooth transitions */
+        body,
+        .navbar,
+        .footer {
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* RESET & BASE */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* NAVBAR */
+        .navbar-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 80px;
+            padding: 10px 24px;
+            width: 100%;
+            max-width: 1200px;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Potta One', cursive;
+            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo-res {
+            color: #1a56a0;
+        }
+
+        body.dark-mode .logo-res {
+            color: #6ab0ff;
+        }
+
+        .logo-q {
+            color: #F90404;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background: rgba(116, 180, 249, 0.67);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li.active a {
+            background: rgba(59, 143, 234, 0.67);
+            font-weight: 600;
+        }
+
+        .btn-signin {
+            background: #000000;
+            color: #FFFFFF;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .btn-signin {
+            background: #ff6b6b;
+        }
+
+        .btn-signin:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Hamburger */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-main);
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 85%;
+                max-width: 300px;
+                background: var(--nav-bg);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 20px;
+                transition: left 0.3s ease;
+                z-index: 999;
+                gap: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .nav-links.mobile-active {
+                left: 20px;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 12px 20px;
+                text-align: center;
+            }
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            padding: 140px 20px 60px;
+            text-align: center;
+        }
+
+        .page-badge {
+            display: inline-block;
+            background: rgba(119, 157, 193, 0.9);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            padding: 6px 22px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #D44633;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .page-badge {
+            background: rgba(0, 0, 0, 0.4);
+            color: #ff9999;
+        }
+
+        .page-title {
+            font-family: 'Rammetto One', cursive;
+            font-size: clamp(36px, 7vw, 56px);
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* CONTENT SECTION */
+        .content-section {
+            padding: 0 20px 80px;
+        }
+
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 50px;
+            transition: background 0.3s ease;
+        }
+
+        .content-container h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 30px 0 15px 0;
+        }
+
+        .content-container h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-container h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 20px 0 10px 0;
+        }
+
+        .content-container p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .content-container ul {
+            margin: 15px 0 20px 30px;
+        }
+
+        .content-container li {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .effective-date {
+            background: rgba(224, 48, 48, 0.1);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .effective-date p {
+            margin: 0;
+            font-weight: 500;
+            color: #e03030;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--footer-bg);
+            color: #ccc;
+            padding: 50px 60px 35px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-family: 'Potta One', cursive;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo .logo-res {
+            color: #ffffff;
+        }
+
+        .footer-logo .logo-q {
+            color: #F90404;
+        }
+
+        .footer-tagline {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .footer-sub {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col h5 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+            color: #aaa;
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+            transform: translateX(4px);
+            display: inline-block;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 30px 20px;
+            }
+
+            .footer {
+                padding: 35px 20px 25px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .footer-links {
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="assets/ResQ Logo.png" alt="ResQ Logo" />
+                </div>
+                <span class="logo-text">
+                    <span class="logo-res">Res</span><span class="logo-q">Q</span>
+                </span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+            <a href="#" class="btn-signin" id="signinBtn">Sign In</a>
+        </nav>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="page-badge">Legal</div>
+        <h1 class="page-title">Privacy Policy</h1>
+        <p class="page-subtitle">Your privacy matters to us. Learn how we protect your data.</p>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content-section">
+        <div class="content-container">
+
+            <div class="effective-date">
+                <p>📅 Effective Date: January 1, 2026 | Last Updated: June 2026</p>
+            </div>
+
+            <h2>1. Information We Collect</h2>
+            <p>ResQ collects information to provide better emergency response services. We collect:</p>
+            <ul>
+                <li><strong>Personal Information:</strong> Name, email, phone number, emergency contacts</li>
+                <li><strong>Location Data:</strong> GPS coordinates only when SOS is triggered</li>
+                <li><strong>Device Information:</strong> Device model, OS version, app version</li>
+                <li><strong>Crash Data:</strong> Accelerometer readings, impact detection patterns</li>
+            </ul>
+
+            <h2>2. How We Use Your Information</h2>
+            <ul>
+                <li>To detect accidents and trigger emergency response</li>
+                <li>To share your location with emergency services during an SOS</li>
+                <li>To improve our AI crash detection algorithms</li>
+                <li>To communicate important safety updates</li>
+            </ul>
+
+            <h2>3. Location & Privacy</h2>
+            <p><strong>We DO NOT track your location 24/7.</strong> Location is only accessed when you manually trigger
+                SOS or when the system detects a potential crash. Your location data is never sold or shared with third
+                parties except emergency services during an active emergency.</p>
+
+            <h2>4. Data Sharing</h2>
+            <p>ResQ shares your data only in these scenarios:</p>
+            <ul>
+                <li><strong>Emergency Services:</strong> When you trigger SOS, we share your location with nearest
+                    police, ambulance, or hospital</li>
+                <li><strong>Legal Compliance:</strong> If required by law enforcement with proper warrant</li>
+                <li><strong>With Your Consent:</strong> Any other sharing requires your explicit permission</li>
+            </ul>
+
+            <h2>5. Data Security</h2>
+            <p>We implement industry-standard security measures including encryption, secure APIs, and regular security
+                audits. Your data is stored on secure servers with restricted access.</p>
+
+            <h2>6. Your Rights</h2>
+            <ul>
+                <li>Access your personal data</li>
+                <li>Request correction or deletion</li>
+                <li>Opt out of non-essential communications</li>
+                <li>Export your data</li>
+            </ul>
+
+            <h2>7. Children's Privacy</h2>
+            <p>ResQ is not intended for children under 13. We do not knowingly collect data from children. If you
+                believe a child has provided us with data, please contact us.</p>
+
+            <h2>8. Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time. We will notify users of any material changes via
+                email or in-app notification.</p>
+
+            <h2>9. Contact Us</h2>
+            <p>If you have questions about this privacy policy, please contact us at:</p>
+            <ul>
+                <li>Email: <strong>privacy@resq.tech</strong></li>
+                <li>Phone: <strong>+91 8602334842</strong></li>
+                <li>Address: <strong>Indore, Madhya Pradesh, India</strong></li>
+            </ul>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-res">Res</span><span class="logo-q">Q</span>
+                </div>
+                <p class="footer-tagline">Every Second Counts.</p>
+                <p class="footer-sub">AI-powered emergency response for Indian roads.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h5>PRODUCT</h5>
+                    <a href="how-it-works.html">How it works</a>
+                    <a href="features.html">Features</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="home.html">Get ResQ</a>
+                </div>
+                <div class="footer-col">
+                    <h5>COMPANY</h5>
+                    <a href="about.html">About Us</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="dashboard.html">Dashboard</a>
+                </div>
+                <div class="footer-col">
+                    <h5>LEGAL</h5>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Services</a>
+                    <a href="security.html">Security</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <p class="footer-copy">2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (darkModeToggle) {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.textContent = '☀️';
+            }
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('darkMode', isDark);
+                darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+            });
+        }
+
+        // Mobile Hamburger
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelector('.nav-links');
+
+        function setupMobileMenu() {
+            const existing = document.querySelector('.hamburger-menu');
+            if (existing) existing.remove();
+            if (window.innerWidth <= 768 && navbar && navLinks) {
+                const hamburger = document.createElement('button');
+                hamburger.className = 'hamburger-menu';
+                hamburger.innerHTML = '<span></span><span></span><span></span>';
+                navbar.insertBefore(hamburger, navLinks);
+                hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-active'));
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => navLinks.classList.remove('mobile-active'));
+                });
+            }
+        }
+        setupMobileMenu();
+        window.addEventListener('resize', setupMobileMenu);
+
+        // Sign In Alert
+        document.getElementById('signinBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Sign In feature coming soon. Be the first to know when ResQ launches!');
+        });
+    </script>
+</body>
+
+</html>
