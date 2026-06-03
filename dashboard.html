@@ -16,11 +16,8 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
     <style>
-        /* ===== DARK MODE VARIABLES (Same as main website) ===== */
+        /* ===== DARK MODE VARIABLES ===== */
         :root {
             --bg-body: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
             --text-main: #1a1a2e;
@@ -45,7 +42,6 @@
             --glass-border: rgba(255, 255, 255, 0.2);
         }
 
-        /* Dark mode button */
         .dark-mode-btn {
             position: fixed;
             top: 20px;
@@ -70,13 +66,11 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Smooth transitions */
         body,
         .stat-card,
         .alert-item,
         .dashboard-container,
-        .hardware-section,
-        .call-card {
+        .hardware-section {
             transition: background 0.3s ease, color 0.3s ease;
         }
 
@@ -100,14 +94,12 @@
             min-height: 100vh;
         }
 
-        /* Dashboard Container */
         .dashboard-container {
             max-width: 1600px;
             margin: 0 auto;
             padding: 80px 20px 40px;
         }
 
-        /* Header */
         .dashboard-header {
             display: flex;
             justify-content: space-between;
@@ -157,7 +149,6 @@
             margin-left: 8px;
         }
 
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -198,7 +189,7 @@
             color: #e03030;
         }
 
-        /* Hardware Status - Always Visible but Static */
+        /* Hardware Section */
         .hardware-section {
             background: var(--card-bg-dark);
             border-radius: 24px;
@@ -242,14 +233,14 @@
         }
 
         .hardware-info p {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-light);
         }
 
         .hardware-status {
             margin-left: auto;
-            font-size: 12px;
-            padding: 4px 12px;
+            font-size: 11px;
+            padding: 4px 10px;
             border-radius: 20px;
         }
 
@@ -258,9 +249,27 @@
             color: #2ecc71;
         }
 
-        .status-waiting {
+        .status-standby {
             background: rgba(255, 193, 7, 0.2);
             color: #ffc107;
+        }
+
+        .status-active {
+            background: rgba(0, 255, 255, 0.2);
+            color: #0ff;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Main Panel */
@@ -292,7 +301,6 @@
             padding-left: 12px;
         }
 
-        /* Alerts List */
         .alerts-list {
             background: var(--card-bg);
             border-radius: 20px;
@@ -380,26 +388,19 @@
             background: #27ae60;
         }
 
-        .dispatched-badge {
-            font-size: 11px;
-            color: #2ecc71;
-            margin-top: 8px;
-        }
-
         .empty-alerts {
             text-align: center;
             padding: 40px;
             color: var(--text-light);
         }
 
-        /* Call Card - Glassmorphism */
+        /* Call Card */
         .call-card {
             background: var(--card-bg-dark);
             border-radius: 20px;
             padding: 20px;
             margin-top: 20px;
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(8px);
         }
 
         .call-header {
@@ -447,23 +448,8 @@
         }
 
         .call-status-badge.active {
-            background: rgba(46, 204, 113, 0.3);
-            color: #2ecc71;
-            animation: none;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.6;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.02);
-            }
+            background: rgba(0, 255, 255, 0.2);
+            color: #0ff;
         }
 
         .call-actions {
@@ -481,7 +467,6 @@
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -489,7 +474,6 @@
 
         .btn-call-answer:hover {
             background: #27ae60;
-            transform: scale(1.02);
         }
 
         .btn-call-end {
@@ -501,7 +485,6 @@
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -511,14 +494,13 @@
             background: #c0392b;
         }
 
-        /* Sensor Data Card - Shows Only During Call */
+        /* Sensor Data Card - Live during call */
         .sensor-data-card {
-            background: linear-gradient(135deg, rgba(30, 42, 74, 0.9), rgba(20, 30, 50, 0.9));
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(30, 42, 74, 0.9));
             border-radius: 16px;
             padding: 15px;
             margin-top: 15px;
             border: 1px solid #0ff;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
         }
 
         .sensor-title {
@@ -531,26 +513,22 @@
             gap: 8px;
         }
 
-        .sensor-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
         .sensor-item {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 12px;
-            padding: 8px;
-            text-align: center;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
         }
 
         .sensor-label {
-            font-size: 10px;
+            font-size: 12px;
             color: #aaa;
         }
 
         .sensor-value {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #0ff;
         }
@@ -568,33 +546,6 @@
             color: var(--text-light);
             text-align: center;
             margin-top: 8px;
-        }
-
-        /* Chart Section */
-        .chart-section {
-            margin-top: 30px;
-        }
-
-        .chart-container {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        canvas {
-            max-height: 280px;
-        }
-
-        /* Disclaimer */
-        .simulation-disclaimer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-            background: rgba(224, 48, 48, 0.1);
-            border-radius: 12px;
-            font-size: 12px;
-            color: #e03030;
-            font-weight: 500;
         }
 
         /* Toast */
@@ -626,8 +577,16 @@
             }
         }
 
-        .hidden {
-            display: none;
+        /* Disclaimer */
+        .simulation-disclaimer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            background: rgba(224, 48, 48, 0.1);
+            border-radius: 12px;
+            font-size: 12px;
+            color: #e03030;
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
@@ -646,8 +605,9 @@
                 font-size: 18px;
             }
 
-            .sensor-grid {
-                grid-template-columns: 1fr;
+            .sensor-item {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -671,7 +631,7 @@
             </div>
         </div>
 
-        <!-- Stats Grid -->
+        <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Active Alerts</div>
@@ -691,41 +651,41 @@
             </div>
         </div>
 
-        <!-- Hardware Status (Static - Always Visible) -->
+        <!-- Hardware Status -->
         <div class="hardware-section">
-            <div class="hardware-title">🔧 Hardware Status | ESP32 · GPS · SIM800L · MPU6050</div>
+            <div class="hardware-title">🔧 Hardware Status | ResQ Edge · GPS · SIM800L · MPU6050</div>
             <div class="hardware-grid">
                 <div class="hardware-card">
                     <div class="hardware-icon">📡</div>
                     <div class="hardware-info">
-                        <h4>ESP32 Controller</h4>
-                        <p>Firmware v2.1.0 | Running</p>
+                        <h4>ResQ Edge</h4>
+                        <p id="resqEdgeStatus">Firmware v2.1.0 | Running</p>
                     </div>
-                    <div class="hardware-status status-online">● ONLINE</div>
+                    <div class="hardware-status status-online" id="resqEdgeLed">● ONLINE</div>
                 </div>
                 <div class="hardware-card">
                     <div class="hardware-icon">📍</div>
                     <div class="hardware-info">
-                        <h4>GPS Module (NEO-6M)</h4>
-                        <p id="gpsStatus">Standby · Waiting for trigger</p>
+                        <h4>GPS Module</h4>
+                        <p id="gpsStatusText">Standby · Waiting for trigger</p>
                     </div>
-                    <div class="hardware-status status-waiting">○ STANDBY</div>
+                    <div class="hardware-status status-standby" id="gpsLed">○ STANDBY</div>
                 </div>
                 <div class="hardware-card">
                     <div class="hardware-icon">📞</div>
                     <div class="hardware-info">
-                        <h4>SIM800L (GSM)</h4>
-                        <p id="gsmStatus">Network: Jio | Ready</p>
+                        <h4>SIM800L</h4>
+                        <p id="gsmStatusText">Network: Jio | Ready</p>
                     </div>
-                    <div class="hardware-status status-waiting">○ STANDBY</div>
+                    <div class="hardware-status status-standby" id="gsmLed">○ STANDBY</div>
                 </div>
                 <div class="hardware-card">
                     <div class="hardware-icon">⚡</div>
                     <div class="hardware-info">
-                        <h4>MPU6050 (Accel/Gyro)</h4>
-                        <p id="mpuStatus">Calibrated · Waiting for impact</p>
+                        <h4>MPU6050</h4>
+                        <p id="mpuStatusText">Calibrated · Waiting for impact</p>
                     </div>
-                    <div class="hardware-status status-waiting">○ STANDBY</div>
+                    <div class="hardware-status status-standby" id="mpuLed">○ STANDBY</div>
                 </div>
             </div>
         </div>
@@ -753,36 +713,22 @@
                         <button class="btn-call-end" id="endBtn" style="display: none;">❌ End Call</button>
                     </div>
 
-                    <!-- Sensor Data - Shows ONLY during active call -->
+                    <!-- Live Sensor Data - Shows ONLY during active call -->
                     <div id="sensorDataPanel" style="display: none;">
                         <div class="sensor-data-card">
-                            <div class="sensor-title">📡 REAL-TIME SENSOR DATA (LIVE)</div>
-                            <div class="sensor-grid">
-                                <div class="sensor-item">
-                                    <div class="sensor-label">GPS Location</div>
-                                    <div class="sensor-value" id="liveGps">19.0760° N, 72.8777° E</div>
-                                </div>
-                                <div class="sensor-item">
-                                    <div class="sensor-label">Speed</div>
-                                    <div class="sensor-value" id="liveSpeed">0 km/h</div>
-                                </div>
-                                <div class="sensor-item">
-                                    <div class="sensor-label">Acceleration (X/Y/Z)</div>
-                                    <div class="sensor-value" id="liveAccel">0.00 / 0.00 / 0.00 g</div>
-                                </div>
-                                <div class="sensor-item">
-                                    <div class="sensor-label">Gyroscope (X/Y/Z)</div>
-                                    <div class="sensor-value" id="liveGyro">0.00 / 0.00 / 0.00 °/s</div>
-                                </div>
-                                <div class="sensor-item">
-                                    <div class="sensor-label">Impact Status</div>
-                                    <div class="sensor-value" id="liveImpact">No Impact</div>
-                                </div>
-                                <div class="sensor-item">
-                                    <div class="sensor-label">Network Signal</div>
-                                    <div class="sensor-value" id="liveSignal">Strong (92%)</div>
-                                </div>
-                            </div>
+                            <div class="sensor-title">📡 LIVE VEHICLE DATA</div>
+                            <div class="sensor-item"><span class="sensor-label">📍 Current Location</span><span
+                                    class="sensor-value" id="liveGps">Fetching...</span></div>
+                            <div class="sensor-item"><span class="sensor-label">📊 Speed</span><span
+                                    class="sensor-value" id="liveSpeed">0 km/h</span></div>
+                            <div class="sensor-item"><span class="sensor-label">⚡ Acceleration</span><span
+                                    class="sensor-value" id="liveAccel">0.00 g</span></div>
+                            <div class="sensor-item"><span class="sensor-label">🔄 Rotation</span><span
+                                    class="sensor-value" id="liveGyro">0.00 °/s</span></div>
+                            <div class="sensor-item"><span class="sensor-label">⚠️ Impact Status</span><span
+                                    class="sensor-value" id="liveImpact">No Impact</span></div>
+                            <div class="sensor-item"><span class="sensor-label">📶 Network Signal</span><span
+                                    class="sensor-value" id="liveSignal">Strong (92%)</span></div>
                         </div>
                     </div>
                 </div>
@@ -791,21 +737,13 @@
             <div class="map-panel">
                 <div class="section-title">🗺️ INCIDENT GEOGRAPHY</div>
                 <div id="incidentMap"></div>
-                <div class="map-note">📍 Active incident markers appear only during active calls/alerts</div>
-            </div>
-        </div>
-
-        <!-- Chart -->
-        <div class="chart-section">
-            <div class="chart-container">
-                <canvas id="alertsChart"></canvas>
+                <div class="map-note">📍 Active incident markers appear during active alerts</div>
             </div>
         </div>
 
         <!-- Disclaimer -->
         <div class="simulation-disclaimer">
-            ⚠️ SIMULATION MODE | This is a demonstration dashboard. Sensor data appears only during active calls. New
-            alerts generate every 25 seconds.
+            ⚠️ SIMULATION MODE | This is a demonstration dashboard. Sensor data appears only during active calls.
         </div>
     </div>
 
@@ -813,93 +751,43 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // ==================== ADVANCED SIMULATION DASHBOARD ====================
-        console.log("%c⚠️ RESQ SIMULATION DASHBOARD", "color: #ff6b6b; font-size: 16px; font-weight: bold;");
-        console.log("%cSensor data appears only during active calls. New alerts every 25 seconds.", "color: #ffc107;");
-
-        // Hospital Location
+        // ==================== RESQ DASHBOARD ====================
         const HOSPITAL_COORDS = [19.0760, 72.8777];
         let totalDispatchedCount = 0;
-        let chart;
         let isOnCall = false;
-        let callInterval;
         let sensorInterval;
         let alertGenerationInterval;
-        let ringtone = null;
+        let currentCaller = null;
 
-        // Dummy Alert Data
         let alerts = [
-            {
-                id: "AL1001",
-                lat: 19.0896,
-                lng: 72.8656,
-                locationName: "Western Express Highway, Andheri East",
-                timestamp: new Date(Date.now() - 2 * 60000).toISOString(),
-                status: "active",
-                dispatched: false,
-                dispatchedAt: null
-            },
-            {
-                id: "AL1002",
-                lat: 19.0289,
-                lng: 72.8329,
-                locationName: "Sion Panvel Highway, Chembur",
-                timestamp: new Date(Date.now() - 10 * 60000).toISOString(),
-                status: "active",
-                dispatched: false,
-                dispatchedAt: null
-            }
+            { id: "AL1001", lat: 19.0896, lng: 72.8656, locationName: "Western Express Highway, Andheri East", timestamp: new Date(Date.now() - 2 * 60000).toISOString(), status: "active", dispatched: false, dispatchedAt: null },
+            { id: "AL1002", lat: 19.0289, lng: 72.8329, locationName: "Sion Panvel Highway, Chembur", timestamp: new Date(Date.now() - 10 * 60000).toISOString(), status: "active", dispatched: false, dispatchedAt: null }
         ];
-
         totalDispatchedCount = alerts.filter(a => a.dispatched).length;
 
-        // Caller Data
         const callers = [
             { name: "Rahul Sharma", number: "+91 98765 43210", location: "Andheri East", lat: 19.1136, lng: 72.8696 },
             { name: "Priya Patel", number: "+91 87654 32109", location: "Bandra West", lat: 19.0596, lng: 72.8296 },
             { name: "Amit Kumar", number: "+91 76543 21098", location: "Jogeshwari", lat: 19.1326, lng: 72.8496 },
-            { name: "Neha Singh", number: "+91 65432 10987", location: "Ghatkopar", lat: 19.0876, lng: 72.9096 },
-            { name: "Vikram Rathore", number: "+91 54321 09876", location: "Borivali", lat: 19.1626, lng: 72.8596 }
+            { name: "Neha Singh", number: "+91 65432 10987", location: "Ghatkopar", lat: 19.0876, lng: 72.9096 }
         ];
 
-        // ==================== MAP INIT ====================
+        // Map
         let map = L.map('incidentMap').setView(HOSPITAL_COORDS, 12);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OSM & CartoDB',
-            subdomains: 'abcd',
-            maxZoom: 18
-        }).addTo(map);
-
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OSM & CartoDB', subdomains: 'abcd', maxZoom: 18 }).addTo(map);
         let hospitalIcon = L.divIcon({ html: '🏥', iconSize: [32, 32], popupAnchor: [0, -12] });
         L.marker(HOSPITAL_COORDS, { icon: hospitalIcon }).addTo(map).bindPopup('<b>🏥 ResQ Command Hospital</b>');
-
         let markersLayer = L.layerGroup().addTo(map);
 
-        // ==================== HELPER FUNCTIONS ====================
-        function formatTime(isoString) {
-            return new Date(isoString).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        }
+        function formatTime(isoString) { return new Date(isoString).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }
+        function showToast(msg, isError = false) { let t = document.getElementById('toastNotification'); t.textContent = msg; t.style.borderLeftColor = isError ? '#e03030' : '#2ecc71'; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 3000); }
 
-        function showToast(message, isError = false) {
-            let toast = document.getElementById('toastNotification');
-            toast.textContent = message;
-            toast.style.borderLeftColor = isError ? '#e03030' : '#2ecc71';
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3000);
-        }
-
+        // Play ringtone
         function playRingtone() {
-            // Simple beep using Audio context with user interaction check
             try {
-                // Check if audio context is allowed (user interaction required)
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
                 const audioCtx = new AudioContext();
-
-                // Resume if suspended (browser policy)
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-
+                if (audioCtx.state === 'suspended') audioCtx.resume();
                 const oscillator = audioCtx.createOscillator();
                 const gainNode = audioCtx.createGain();
                 oscillator.connect(gainNode);
@@ -909,130 +797,125 @@
                 oscillator.start();
                 gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
                 oscillator.stop(audioCtx.currentTime + 1);
-            } catch (e) {
-                console.log("Ringtone not supported in this browser");
+            } catch (e) { console.log("Ringtone not supported"); }
+        }
+
+        // Update Hardware UI based on call status
+        function updateHardwareUI(isActive) {
+            if (isActive) {
+                document.getElementById('gpsStatusText').innerHTML = 'Tracking Live Location';
+                document.getElementById('gpsLed').className = 'hardware-status status-active';
+                document.getElementById('gpsLed').innerHTML = '● ACTIVE';
+                document.getElementById('gsmStatusText').innerHTML = 'Network: Jio | Transmitting Data';
+                document.getElementById('gsmLed').className = 'hardware-status status-active';
+                document.getElementById('gsmLed').innerHTML = '● ACTIVE';
+                document.getElementById('mpuStatusText').innerHTML = 'Sampling @ 100Hz · Monitoring';
+                document.getElementById('mpuLed').className = 'hardware-status status-active';
+                document.getElementById('mpuLed').innerHTML = '● ACTIVE';
+                document.getElementById('resqEdgeStatus').innerHTML = 'Firmware v2.1.0 | Active';
+                document.getElementById('resqEdgeLed').className = 'hardware-status status-active';
+                document.getElementById('resqEdgeLed').innerHTML = '● ACTIVE';
+            } else {
+                document.getElementById('gpsStatusText').innerHTML = 'Standby · Waiting for trigger';
+                document.getElementById('gpsLed').className = 'hardware-status status-standby';
+                document.getElementById('gpsLed').innerHTML = '○ STANDBY';
+                document.getElementById('gsmStatusText').innerHTML = 'Network: Jio | Ready';
+                document.getElementById('gsmLed').className = 'hardware-status status-standby';
+                document.getElementById('gsmLed').innerHTML = '○ STANDBY';
+                document.getElementById('mpuStatusText').innerHTML = 'Calibrated · Waiting for impact';
+                document.getElementById('mpuLed').className = 'hardware-status status-standby';
+                document.getElementById('mpuLed').innerHTML = '○ STANDBY';
+                document.getElementById('resqEdgeStatus').innerHTML = 'Firmware v2.1.0 | Running';
+                document.getElementById('resqEdgeLed').className = 'hardware-status status-online';
+                document.getElementById('resqEdgeLed').innerHTML = '● ONLINE';
             }
         }
 
-        // ==================== SENSOR DATA SIMULATION ====================
+        // Start sensor simulation
         function startSensorSimulation(callerLat, callerLng) {
             if (sensorInterval) clearInterval(sensorInterval);
-
             let speed = 0;
             let impactTriggered = false;
+            let currentLat = callerLat, currentLng = callerLng;
 
             sensorInterval = setInterval(() => {
-                if (!isOnCall) {
-                    clearInterval(sensorInterval);
-                    return;
-                }
+                if (!isOnCall) { clearInterval(sensorInterval); return; }
 
-                // Simulate vehicle movement
                 speed = Math.min(120, speed + Math.random() * 15);
-                let latChange = (Math.random() - 0.5) * 0.002;
-                let lngChange = (Math.random() - 0.5) * 0.002;
-                let currentLat = callerLat + latChange;
-                let currentLng = callerLng + lngChange;
+                currentLat += (Math.random() - 0.5) * 0.002;
+                currentLng += (Math.random() - 0.5) * 0.002;
 
-                // Simulate impact (15% chance during call)
                 let impact = false;
-                let impactText = "No Impact";
-                let impactColor = "#0ff";
-
-                if (!impactTriggered && Math.random() < 0.15 && speed > 30) {
+                if (!impactTriggered && Math.random() < 0.12 && speed > 30) {
                     impact = true;
                     impactTriggered = true;
-                    impactText = "🚨 IMPACT DETECTED!";
-                    impactColor = "#ff6b6b";
+                    document.getElementById('liveImpact').innerHTML = '🚨 IMPACT DETECTED!';
+                    document.getElementById('liveImpact').style.color = '#ff6b6b';
                     showToast("⚠️ IMPACT DETECTED! Generating emergency alert...", true);
 
-                    // Create new alert
                     setTimeout(() => {
                         const newId = "AL" + (Math.floor(Math.random() * 9000) + 1100);
                         alerts.unshift({
-                            id: newId,
-                            lat: currentLat,
-                            lng: currentLng,
-                            locationName: `Near ${callers.find(c => c.lat === callerLat)?.location || "Mumbai"}`,
-                            timestamp: new Date().toISOString(),
-                            status: "active",
-                            dispatched: false,
-                            dispatchedAt: null
+                            id: newId, lat: currentLat, lng: currentLng,
+                            locationName: `Near ${currentCaller?.location || "Mumbai"}`,
+                            timestamp: new Date().toISOString(), status: "active", dispatched: false, dispatchedAt: null
                         });
                         updateUI();
                         showToast(`🚨 NEW CRASH ALERT! Ambulance dispatch recommended.`, true);
+                        document.getElementById('mpuStatusText').innerHTML = '🚨 IMPACT REGISTERED!';
+                        setTimeout(() => {
+                            if (!isOnCall) document.getElementById('mpuStatusText').innerHTML = 'Calibrated · Waiting for impact';
+                            else document.getElementById('mpuStatusText').innerHTML = 'Sampling @ 100Hz · Monitoring';
+                        }, 5000);
                     }, 2000);
                 }
 
-                // Update UI
                 document.getElementById('liveGps').innerHTML = `${currentLat.toFixed(4)}° N, ${currentLng.toFixed(4)}° E`;
                 document.getElementById('liveSpeed').innerHTML = `${Math.floor(speed)} km/h`;
-                document.getElementById('liveAccel').innerHTML = `${(Math.random() * 2).toFixed(2)} / ${(Math.random() * 2).toFixed(2)} / ${(Math.random() * 2).toFixed(2)} g`;
-                document.getElementById('liveGyro').innerHTML = `${(Math.random() * 100 - 50).toFixed(1)} / ${(Math.random() * 100 - 50).toFixed(1)} / ${(Math.random() * 100 - 50).toFixed(1)} °/s`;
-                document.getElementById('liveImpact').innerHTML = impactText;
-                document.getElementById('liveImpact').style.color = impactColor;
+                document.getElementById('liveAccel').innerHTML = `${(Math.random() * 2).toFixed(2)} g`;
+                document.getElementById('liveGyro').innerHTML = `${(Math.random() * 100 - 50).toFixed(1)} °/s`;
+                if (!impact) document.getElementById('liveImpact').innerHTML = 'No Impact';
                 document.getElementById('liveSignal').innerHTML = `Strong (${Math.floor(70 + Math.random() * 25)}%)`;
 
-                // Update GPS status
-                document.getElementById('gpsStatus').innerHTML = `Tracking · ${Math.floor(8 + Math.random() * 8)} satellites`;
-                document.getElementById('gsmStatus').innerHTML = `Network: Jio | Transmitting data`;
-                document.getElementById('mpuStatus').innerHTML = impact ? `🚨 IMPACT REGISTERED!` : `Sampling @ 100Hz · Monitoring`;
-
-                const gpsStatusDiv = document.querySelector('.hardware-card:nth-child(2) .hardware-status');
-                const gsmStatusDiv = document.querySelector('.hardware-card:nth-child(3) .hardware-status');
-                const mpuStatusDiv = document.querySelector('.hardware-card:nth-child(4) .hardware-status');
-                if (gpsStatusDiv) gpsStatusDiv.className = 'hardware-status status-online';
-                if (gsmStatusDiv) gsmStatusDiv.className = 'hardware-status status-online';
-                if (mpuStatusDiv) mpuStatusDiv.className = 'hardware-status status-online';
-
+                document.getElementById('gpsStatusText').innerHTML = `Tracking · ${Math.floor(8 + Math.random() * 8)} satellites`;
             }, 1000);
         }
 
-        // ==================== CALL SIMULATION ====================
+        // Incoming call
         function simulateIncomingCall() {
             if (isOnCall) return;
-
-            const randomCaller = callers[Math.floor(Math.random() * callers.length)];
-            document.getElementById('callerName').innerHTML = `📞 ${randomCaller.name}`;
-            document.getElementById('callerNumber').innerHTML = randomCaller.number;
+            currentCaller = callers[Math.floor(Math.random() * callers.length)];
+            document.getElementById('callerName').innerHTML = `📞 ${currentCaller.name}`;
+            document.getElementById('callerNumber').innerHTML = currentCaller.number;
             document.getElementById('callStatusBadge').innerHTML = '🔴 INCOMING CALL';
             document.getElementById('callStatusBadge').className = 'call-status-badge incoming';
             document.getElementById('callIcon').innerHTML = '📞🔔';
             document.getElementById('answerBtn').style.display = 'flex';
             document.getElementById('endBtn').style.display = 'none';
-
             playRingtone();
-            showToast(`📞 Incoming call from ${randomCaller.name} reporting emergency`, true);
-
-            window.currentCaller = randomCaller;
+            showToast(`📞 Incoming call from ${currentCaller.name}`, true);
         }
 
+        // Answer call
         function answerCall() {
-            if (!window.currentCaller) return;
-
+            if (!currentCaller) return;
             isOnCall = true;
-            const caller = window.currentCaller;
-
-            document.getElementById('callerName').innerHTML = `🎙️ ${caller.name}`;
+            document.getElementById('callerName').innerHTML = `🎙️ ${currentCaller.name}`;
             document.getElementById('callStatusBadge').innerHTML = '🟢 CALL ACTIVE';
             document.getElementById('callStatusBadge').className = 'call-status-badge active';
             document.getElementById('callIcon').innerHTML = '🎙️';
             document.getElementById('answerBtn').style.display = 'none';
             document.getElementById('endBtn').style.display = 'flex';
-
-            // Show sensor data panel
             document.getElementById('sensorDataPanel').style.display = 'block';
-
-            // Start sensor simulation
-            startSensorSimulation(caller.lat, caller.lng);
-
-            showToast(`✅ Call connected with ${caller.name}. Receiving live sensor data...`);
+            updateHardwareUI(true);
+            startSensorSimulation(currentCaller.lat, currentCaller.lng);
+            showToast(`✅ Call connected. Receiving live vehicle data...`);
         }
 
+        // End call
         function endCall() {
             isOnCall = false;
             if (sensorInterval) clearInterval(sensorInterval);
-
             document.getElementById('callerName').innerHTML = 'Emergency Call Center';
             document.getElementById('callerNumber').innerHTML = 'Waiting for incoming call...';
             document.getElementById('callStatusBadge').innerHTML = '🟢 STANDBY';
@@ -1041,32 +924,18 @@
             document.getElementById('answerBtn').style.display = 'none';
             document.getElementById('endBtn').style.display = 'none';
             document.getElementById('sensorDataPanel').style.display = 'none';
-
-            // Reset hardware status
-            document.getElementById('gpsStatus').innerHTML = 'Standby · Waiting for trigger';
-            document.getElementById('gsmStatus').innerHTML = 'Network: Jio | Ready';
-            document.getElementById('mpuStatus').innerHTML = 'Calibrated · Waiting for impact';
-
-            const gpsStatusDiv = document.querySelector('.hardware-card:nth-child(2) .hardware-status');
-            const gsmStatusDiv = document.querySelector('.hardware-card:nth-child(3) .hardware-status');
-            const mpuStatusDiv = document.querySelector('.hardware-card:nth-child(4) .hardware-status');
-            if (gpsStatusDiv) gpsStatusDiv.className = 'hardware-status status-waiting';
-            if (gsmStatusDiv) gsmStatusDiv.className = 'hardware-status status-waiting';
-            if (mpuStatusDiv) mpuStatusDiv.className = 'hardware-status status-waiting';
-
+            updateHardwareUI(false);
             showToast(`📞 Call ended. Back to standby mode.`);
-            window.currentCaller = null;
+            currentCaller = null;
         }
 
-        // ==================== ALERT FUNCTIONS ====================
+        // Dispatch ambulance
         function dispatchAmbulance(alertId) {
             let alert = alerts.find(a => a.id === alertId);
             if (!alert || alert.dispatched) return;
-
             alert.dispatched = true;
             alert.dispatchedAt = new Date().toISOString();
             totalDispatchedCount++;
-
             updateUI();
             showToast(`🚑 Ambulance dispatched to ${alert.locationName}`);
         }
@@ -1074,13 +943,11 @@
         function resolveAlert(alertId) {
             let alert = alerts.find(a => a.id === alertId);
             if (!alert || alert.status === 'resolved') return;
-
             alert.status = 'resolved';
             updateUI();
             showToast(`✅ Incident ${alertId} resolved.`);
         }
 
-        // ==================== UPDATE UI ====================
         function refreshMarkers() {
             markersLayer.clearLayers();
             alerts.forEach(alert => {
@@ -1095,23 +962,14 @@
         function renderAlertList() {
             const container = document.getElementById('alertsContainer');
             const activeAlerts = alerts.filter(a => a.status === 'active');
-
-            if (activeAlerts.length === 0) {
-                container.innerHTML = '<div class="empty-alerts">✅ No active alerts · System ready</div>';
-                return;
-            }
-
+            if (activeAlerts.length === 0) { container.innerHTML = '<div class="empty-alerts">✅ No active alerts · System ready</div>'; return; }
             let html = '';
             activeAlerts.forEach(alert => {
-                html += `<div class="alert-item">
-          <div class="alert-header"><span class="alert-id">🚨 ${alert.id}</span><span class="alert-time">${formatTime(alert.timestamp)}</span></div>
+                html += `<div class="alert-item"><div class="alert-header"><span class="alert-id">🚨 ${alert.id}</span><span class="alert-time">${formatTime(alert.timestamp)}</span></div>
           <div class="alert-location">📍 ${alert.locationName}</div>
-          <div class="alert-actions">
-            <button class="btn-dispatch" onclick="dispatchAmbulance('${alert.id}')" ${alert.dispatched ? 'disabled' : ''}>${alert.dispatched ? '🚑 Enroute' : '🚑 Dispatch Now'}</button>
-            <button class="btn-resolve" onclick="resolveAlert('${alert.id}')">✅ Resolve</button>
-          </div>
-          ${alert.dispatched ? '<div class="dispatched-badge">✔️ Dispatched at ' + formatTime(alert.dispatchedAt) + '</div>' : ''}
-        </div>`;
+          <div class="alert-actions"><button class="btn-dispatch" onclick="dispatchAmbulance('${alert.id}')" ${alert.dispatched ? 'disabled' : ''}>${alert.dispatched ? '🚑 Enroute' : '🚑 Dispatch Now'}</button>
+          <button class="btn-resolve" onclick="resolveAlert('${alert.id}')">✅ Resolve</button></div>
+          ${alert.dispatched ? '<div class="dispatched-badge" style="font-size:11px;color:#2ecc71;margin-top:8px;">✔️ Dispatched at ' + formatTime(alert.dispatchedAt) + '</div>' : ''}</div>`;
             });
             container.innerHTML = html;
         }
@@ -1120,97 +978,43 @@
             const activeCount = alerts.filter(a => a.status === 'active').length;
             document.getElementById('activeAlertsCount').innerText = activeCount;
             document.getElementById('totalDispatched').innerText = totalDispatchedCount;
-            if (chart) {
-                chart.data.datasets[0].data = [activeCount, alerts.filter(a => a.status === 'resolved').length, totalDispatchedCount];
-                chart.update();
-            }
         }
 
-        function updateUI() {
-            renderAlertList();
-            refreshMarkers();
-            updateStats();
-        }
+        function updateUI() { renderAlertList(); refreshMarkers(); updateStats(); }
 
-        // ==================== AUTO ALERT GENERATION (Every 25 seconds) ====================
+        // Auto generate alert every 25 sec
         function generateNewAlert() {
             const locations = [
                 { lat: 19.1123, lng: 72.8828, name: "Jogeshwari-Vikhroli Link Road" },
                 { lat: 19.0478, lng: 72.9022, name: "Eastern Express Highway, Ghatkopar" },
-                { lat: 19.1623, lng: 72.8476, name: "New Link Road, Kandivali West" },
-                { lat: 18.9989, lng: 72.8321, name: "Sion-Trombay Road" }
+                { lat: 19.1623, lng: 72.8476, name: "New Link Road, Kandivali West" }
             ];
             const loc = locations[Math.floor(Math.random() * locations.length)];
-            const newId = "AL" + (Math.floor(Math.random() * 9000) + 1100);
-
-            alerts.unshift({
-                id: newId,
-                lat: loc.lat,
-                lng: loc.lng,
-                locationName: loc.name,
-                timestamp: new Date().toISOString(),
-                status: "active",
-                dispatched: false,
-                dispatchedAt: null
-            });
-
+            alerts.unshift({ id: "AL" + (Math.floor(Math.random() * 9000) + 1100), lat: loc.lat, lng: loc.lng, locationName: loc.name, timestamp: new Date().toISOString(), status: "active", dispatched: false, dispatchedAt: null });
             updateUI();
             showToast(`🚨 NEW CRASH DETECTED! ${loc.name} · Tap Dispatch`, true);
         }
 
-        // ==================== CHART INIT ====================
-        function initChart() {
-            const ctx = document.getElementById('alertsChart').getContext('2d');
-            chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Active Alerts', 'Resolved', 'Dispatched'],
-                    datasets: [{ label: 'Incident Stats', data: [alerts.filter(a => a.status === 'active').length, alerts.filter(a => a.status === 'resolved').length, totalDispatchedCount], backgroundColor: ['#e03030', '#2ecc71', '#3498db'], borderRadius: 8 }]
-                },
-                options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'top', labels: { color: getComputedStyle(document.body).getPropertyValue('--text-main') } } } }
-            });
-        }
-
-        // ==================== INIT ====================
+        // Init
         function init() {
             updateUI();
-            initChart();
-
-            // Auto-generate alert every 25 seconds
-            alertGenerationInterval = setInterval(() => {
-                if (alerts.filter(a => a.status === 'active').length < 6) {
-                    generateNewAlert();
-                }
-            }, 25000);
-
-            // Auto-simulate incoming call every 40-60 seconds
-            setInterval(() => {
-                if (!isOnCall && Math.random() > 0.5) {
-                    simulateIncomingCall();
-                }
-            }, 45000);
+            setInterval(() => { if (alerts.filter(a => a.status === 'active').length < 5) generateNewAlert(); }, 25000);
+            setInterval(() => { if (!isOnCall && Math.random() > 0.5) simulateIncomingCall(); }, 45000);
         }
 
-        // ==================== DARK MODE ====================
+        // Dark mode
         const darkModeToggle = document.getElementById('darkModeToggle');
         if (darkModeToggle) {
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-                darkModeToggle.textContent = '☀️';
-            }
+            if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkModeToggle.textContent = '☀️'; }
             darkModeToggle.addEventListener('click', () => {
                 document.body.classList.toggle('dark-mode');
-                const isDark = document.body.classList.contains('dark-mode');
-                localStorage.setItem('darkMode', isDark);
-                darkModeToggle.textContent = isDark ? '☀️' : '🌙';
-                if (chart) chart.update();
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+                darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
             });
         }
 
-        // Event Listeners
         document.getElementById('answerBtn').addEventListener('click', answerCall);
         document.getElementById('endBtn').addEventListener('click', endCall);
-
         window.dispatchAmbulance = dispatchAmbulance;
         window.resolveAlert = resolveAlert;
 
