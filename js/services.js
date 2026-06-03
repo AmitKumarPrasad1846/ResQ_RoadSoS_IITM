@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
    ResQ Services Page — Complete JavaScript
-   Dark Mode WORKING | Hamburger Menu WORKING | Animations
+   Dark Mode WORKING | Hamburger Menu WORKING | Dashboard Fix
 ════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const darkModeToggle = document.getElementById('darkModeToggle');
 
   if (darkModeToggle) {
-    // Check saved preference on load
     const savedDarkMode = localStorage.getItem('darkMode');
     if (savedDarkMode === 'true') {
       document.body.classList.add('dark-mode');
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Dark mode enabled from localStorage');
     }
 
-    // Toggle on click
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       const isDark = document.body.classList.contains('dark-mode');
@@ -27,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
       darkModeToggle.textContent = isDark ? '☀️' : '🌙';
       console.log('Dark mode toggled:', isDark);
     });
-  } else {
-    console.log('Dark mode toggle button not found!');
   }
 
   /* ═══════════════════════════════════════════════════════
@@ -38,38 +34,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
 
   function setupMobileMenu() {
-    // Remove existing hamburger if any
     const existingHamburger = document.querySelector('.hamburger-menu');
     if (existingHamburger) {
       existingHamburger.remove();
     }
 
-    // Only add hamburger on mobile devices
     if (window.innerWidth <= 768 && navbar && navLinks) {
-      // Create hamburger button
       const hamburger = document.createElement('button');
       hamburger.className = 'hamburger-menu';
       hamburger.innerHTML = `<span></span><span></span><span></span>`;
       hamburger.setAttribute('aria-label', 'Menu');
 
-      // Insert hamburger before nav-links
       navbar.insertBefore(hamburger, navLinks);
 
-      // Toggle menu on hamburger click
       hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
         navLinks.classList.toggle('mobile-active');
         console.log('Hamburger clicked, menu active:', navLinks.classList.contains('mobile-active'));
       });
 
-      // Close menu when clicking outside
       document.addEventListener('click', (e) => {
         if (!navbar.contains(e.target) && navLinks.classList.contains('mobile-active')) {
           navLinks.classList.remove('mobile-active');
         }
       });
 
-      // Close menu when clicking on a link
       const allLinks = document.querySelectorAll('.nav-links a');
       allLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -79,13 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Run on load
   setupMobileMenu();
-
-  // Run on window resize
   window.addEventListener('resize', () => {
     setupMobileMenu();
-    // Also close menu if it was open
     if (window.innerWidth > 768 && navLinks) {
       navLinks.classList.remove('mobile-active');
     }
@@ -126,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(el);
   });
 
-  // Add reveal styles if not exist
   if (!document.querySelector('#reveal-style')) {
     const revealStyle = document.createElement('style');
     revealStyle.id = 'reveal-style';
@@ -167,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ═══════════════════════════════════════════════════════
-     6. BUTTON ALERTS
+     6. BUTTON ALERTS (Dashboard button - NO ALERT, direct navigation)
      ══════════════════════════════════════════════════════ */
   const signinBtn = document.getElementById('signinBtn');
   if (signinBtn) {
@@ -177,11 +161,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // DASHBOARD BUTTON - DIRECT NAVIGATION (FIXED)
   const dashboardBtn = document.getElementById('dashboardBtn');
   if (dashboardBtn) {
     dashboardBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('ResQ Command Center Dashboard\n\nLive accident alerts, victim tracking, and dispatch system. Coming soon!');
+      // NO alert - allow direct navigation to dashboard.html
+      console.log('Navigating to ResQ Command Center Dashboard...');
+      // Let the href work normally - no preventDefault
+      // Just log, don't block navigation
     });
   }
 
@@ -212,7 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ═══════════════════════════════════════════════════════
      7. SCROLL TO TOP BUTTON
      ══════════════════════════════════════════════════════ */
-  // Check if scroll button already exists
   let scrollTopBtn = document.querySelector('.scroll-top-btn');
 
   if (!scrollTopBtn) {
@@ -329,4 +315,5 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('📱 Features: Dark Mode Working | Hamburger Menu Working | Scroll Reveal');
   console.log('🌙 Dark mode status:', document.body.classList.contains('dark-mode') ? 'ON' : 'OFF');
   console.log('📐 Window width:', window.innerWidth, '- Mobile menu:', window.innerWidth <= 768 ? 'active' : 'inactive');
+  console.log('🔗 Dashboard link is ACTIVE - clicking will redirect to dashboard.html');
 });
