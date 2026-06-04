@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>ResQ – Terms of Service</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== DARK MODE VARIABLES ===== */
+        :root {
+            --bg-body: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
+            --text-main: #1a1a2e;
+            --text-light: #3F3C3C;
+            --card-bg: #CCD7E2;
+            --nav-bg: rgba(96, 162, 234, 0.85);
+            --footer-bg: #252525;
+            --border-light: rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode {
+            --bg-body: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
+            --text-main: #ffffff;
+            --text-light: #cccccc;
+            --card-bg: #1e2a4a;
+            --nav-bg: rgba(15, 30, 60, 0.95);
+            --footer-bg: #0a0a15;
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dark mode button */
+        .dark-mode-btn {
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px 14px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .dark-mode-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .dark-mode-btn {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Smooth transitions */
+        body,
+        .navbar,
+        .footer {
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* RESET & BASE */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* NAVBAR */
+        .navbar-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 80px;
+            padding: 10px 24px;
+            width: 100%;
+            max-width: 1200px;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Potta One', cursive;
+            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo-res {
+            color: #1a56a0;
+        }
+
+        body.dark-mode .logo-res {
+            color: #6ab0ff;
+        }
+
+        .logo-q {
+            color: #F90404;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+            padding: 8px 18px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background: rgba(116, 180, 249, 0.67);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li.active a {
+            background: rgba(59, 143, 234, 0.67);
+            font-weight: 600;
+        }
+
+        .btn-signin {
+            background: #000000;
+            color: #FFFFFF;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .btn-signin {
+            background: #ff6b6b;
+        }
+
+        .btn-signin:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Hamburger */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-main);
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 85%;
+                max-width: 300px;
+                background: var(--nav-bg);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 20px;
+                transition: left 0.3s ease;
+                z-index: 999;
+                gap: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .nav-links.mobile-active {
+                left: 20px;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 12px 20px;
+                text-align: center;
+            }
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            padding: 140px 20px 60px;
+            text-align: center;
+        }
+
+        .page-badge {
+            display: inline-block;
+            background: rgba(119, 157, 193, 0.9);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            padding: 6px 22px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #D44633;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .page-badge {
+            background: rgba(0, 0, 0, 0.4);
+            color: #ff9999;
+        }
+
+        .page-title {
+            font-family: 'Rammetto One', cursive;
+            font-size: clamp(36px, 7vw, 56px);
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* CONTENT SECTION */
+        .content-section {
+            padding: 0 20px 80px;
+        }
+
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 50px;
+            transition: background 0.3s ease;
+        }
+
+        .content-container h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 30px 0 15px 0;
+        }
+
+        .content-container h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-container h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 20px 0 10px 0;
+        }
+
+        .content-container p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .content-container ul {
+            margin: 15px 0 20px 30px;
+        }
+
+        .content-container li {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .content-container strong {
+            color: #e03030;
+        }
+
+        .effective-date {
+            background: rgba(224, 48, 48, 0.1);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .effective-date p {
+            margin: 0;
+            font-weight: 500;
+            color: #e03030;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--footer-bg);
+            color: #ccc;
+            padding: 50px 60px 35px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-family: 'Potta One', cursive;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo .logo-res {
+            color: #ffffff;
+        }
+
+        .footer-logo .logo-q {
+            color: #F90404;
+        }
+
+        .footer-tagline {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .footer-sub {
+            font-size: 14px;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col h5 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+            color: #aaa;
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+            transform: translateX(4px);
+            display: inline-block;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 30px 20px;
+            }
+
+            .footer {
+                padding: 35px 20px 25px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .footer-links {
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="assets/ResQ Logo.png" alt="ResQ Logo" />
+                </div>
+                <span class="logo-text">
+                    <span class="logo-res">Res</span><span class="logo-q">Q</span>
+                </span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+            <a href="#" class="btn-signin" id="signinBtn">Sign In</a>
+        </nav>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="page-badge">Legal</div>
+        <h1 class="page-title">Terms of Service</h1>
+        <p class="page-subtitle">Please read these terms carefully before using ResQ.</p>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content-section">
+        <div class="content-container">
+
+            <div class="effective-date">
+                <p>📅 Effective Date: January 1, 2026 | Last Updated: June 2026</p>
+            </div>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing or using ResQ's services, website, mobile application, or hardware device (collectively, the
+                "Service"), you agree to be bound by these Terms of Service. If you disagree with any part of the terms,
+                you may not access the Service.</p>
+
+            <h2>2. Description of Service</h2>
+            <p>ResQ provides emergency response services including:</p>
+            <ul>
+                <li>Accident detection using AI and sensors</li>
+                <li>Emergency SOS alerts to nearby services</li>
+                <li>Real-time location sharing during emergencies</li>
+                <li>Bystander mode for reporting accidents</li>
+                <li>Dashboard for emergency service providers</li>
+            </ul>
+
+            <h2>3. Eligibility</h2>
+            <p>You must be at least 18 years old to use ResQ. By using the Service, you represent and warrant that you
+                meet this age requirement. If you are using ResQ on behalf of an organization, you represent that you
+                have authority to bind that organization.</p>
+
+            <h2>4. User Responsibilities</h2>
+            <ul>
+                <li>Provide accurate and complete information during registration</li>
+                <li>Keep your account credentials secure and confidential</li>
+                <li>Not misuse or abuse the emergency response system</li>
+                <li>Not trigger false SOS alerts intentionally</li>
+                <li>Comply with all applicable laws and regulations</li>
+            </ul>
+
+            <h2>5. Emergency Response Limitations</h2>
+            <p><strong>IMPORTANT:</strong> ResQ is a tool to assist in emergency response, but we cannot guarantee:</p>
+            <ul>
+                <li>That emergency services will always be available in your area</li>
+                <li>Response times of police, ambulance, or hospitals</li>
+                <li>That the Service will be uninterrupted or error-free</li>
+                <li>That crash detection is 100% accurate in all conditions</li>
+            </ul>
+            <p>In an emergency, always call your local emergency number as your primary response method.</p>
+
+            <h2>6. Privacy and Data</h2>
+            <p>Your use of ResQ is also governed by our <a href="privacy-policy.html" style="color: #e03030;">Privacy
+                    Policy</a>. By using ResQ, you consent to the collection and use of your information as described in
+                the Privacy Policy.</p>
+
+            <h2>7. Prohibited Conduct</h2>
+            <p>You agree NOT to:</p>
+            <ul>
+                <li>Use ResQ for any illegal purpose</li>
+                <li>Intentionally trigger false SOS alerts</li>
+                <li>Attempt to hack, reverse engineer, or disrupt the Service</li>
+                <li>Use automated systems to access the Service</li>
+                <li>Impersonate another person or entity</li>
+                <li>Share your account credentials with others</li>
+            </ul>
+
+            <h2>8. Hardware Device Terms</h2>
+            <p>If you purchase ResQ Edge hardware device:</p>
+            <ul>
+                <li>The device must be properly installed as per instructions</li>
+                <li>We are not responsible for improper installation</li>
+                <li>Device warranty covers manufacturing defects only</li>
+                <li>We are not liable for damage during accidents</li>
+            </ul>
+
+            <h2>9. Intellectual Property</h2>
+            <p>All content, features, and functionality of ResQ, including but not limited to logo, design, text,
+                graphics, software, and code, are owned by ResQ Technologies and protected by copyright, trademark, and
+                other intellectual property laws.</p>
+
+            <h2>10. Termination</h2>
+            <p>We may terminate or suspend your account immediately, without prior notice, for conduct that violates
+                these Terms or is harmful to other users or the Service. Upon termination, your right to use the Service
+                will immediately cease.</p>
+
+            <h2>11. Disclaimer of Warranties</h2>
+            <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR
+                IMPLIED. RESQ DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE.
+            </p>
+
+            <h2>12. Limitation of Liability</h2>
+            <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, RESQ SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL,
+                CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICE.</p>
+
+            <h2>13. Indemnification</h2>
+            <p>You agree to indemnify and hold ResQ harmless from any claims, damages, losses, and expenses arising from
+                your use of the Service or violation of these Terms.</p>
+
+            <h2>14. Modifications to Terms</h2>
+            <p>We reserve the right to modify these Terms at any time. We will notify users of material changes via
+                email or in-app notification. Your continued use of ResQ after changes constitutes acceptance of the new
+                Terms.</p>
+
+            <h2>15. Governing Law</h2>
+            <p>These Terms shall be governed by and construed in accordance with the laws of India, without regard to
+                conflict of law principles. Any disputes shall be resolved in the courts of Indore, Madhya Pradesh.</p>
+
+            <h2>16. Contact Us</h2>
+            <p>If you have any questions about these Terms, please contact us at:</p>
+            <ul>
+                <li>Email: <strong>legal@resq.tech</strong></li>
+                <li>Phone: <strong>+91 8602334842</strong></li>
+                <li>Address: <strong>Indore, Madhya Pradesh, India</strong></li>
+            </ul>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-res">Res</span><span class="logo-q">Q</span>
+                </div>
+                <p class="footer-tagline">Every Second Counts.</p>
+                <p class="footer-sub">AI-powered emergency response for Indian roads.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h5>PRODUCT</h5>
+                    <a href="how-it-works.html">How it works</a>
+                    <a href="features.html">Features</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="home.html">Get ResQ</a>
+                </div>
+                <div class="footer-col">
+                    <h5>COMPANY</h5>
+                    <a href="about.html">About Us</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="dashboard.html">Dashboard</a>
+                </div>
+                <div class="footer-col">
+                    <h5>LEGAL</h5>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Services</a>
+                    <a href="security.html">Security</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <p class="footer-copy">2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (darkModeToggle) {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.textContent = '☀️';
+            }
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('darkMode', isDark);
+                darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+            });
+        }
+
+        // Mobile Hamburger
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelector('.nav-links');
+
+        function setupMobileMenu() {
+            const existing = document.querySelector('.hamburger-menu');
+            if (existing) existing.remove();
+            if (window.innerWidth <= 768 && navbar && navLinks) {
+                const hamburger = document.createElement('button');
+                hamburger.className = 'hamburger-menu';
+                hamburger.innerHTML = '<span></span><span></span><span></span>';
+                navbar.insertBefore(hamburger, navLinks);
+                hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-active'));
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => navLinks.classList.remove('mobile-active'));
+                });
+            }
+        }
+        setupMobileMenu();
+        window.addEventListener('resize', setupMobileMenu);
+
+        // Sign In Alert
+        document.getElementById('signinBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Sign In feature coming soon. Be the first to know when ResQ launches!');
+        });
+    </script>
+</body>
+
+</html>

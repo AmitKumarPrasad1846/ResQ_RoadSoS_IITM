@@ -45,7 +45,7 @@
       overflow: hidden;
     }
 
-    /* BACKGROUND IMAGE - FIXED PATH */
+    /* BACKGROUND IMAGE */
     .bg-image {
       position: absolute;
       top: 0;
@@ -437,7 +437,7 @@
   </div>
 
   <script>
-    // Demo message function - No emojis, clean text
+    // Demo message function - clean text
     function showDemoMessage() {
       alert("Demo video coming soon.\n\nResQ - Smart accident detection and emergency response system.");
     }
@@ -450,7 +450,6 @@
       const bgImg = document.querySelector('.bg-image');
       if (bgImg && bgImg.complete && bgImg.naturalWidth === 0) {
         console.error('Background image missing. Make sure "assets/background-1.png" exists');
-        console.log('Tip: Create an "assets" folder and place "background-1.png" inside it');
       }
 
       const shieldImg = document.querySelector('.shield-img');
