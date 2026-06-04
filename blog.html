@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+  <title>ResQ – Blog | Insights & Updates</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== DARK MODE VARIABLES ===== */
+    :root {
+      --bg-body: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
+      --text-main: #1a1a2e;
+      --text-light: #3F3C3C;
+      --card-bg: #CCD7E2;
+      --nav-bg: rgba(96, 162, 234, 0.85);
+      --footer-bg: #252525;
+    }
+
+    body.dark-mode {
+      --bg-body: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
+      --text-main: #ffffff;
+      --text-light: #cccccc;
+      --card-bg: #1e2a4a;
+      --nav-bg: rgba(15, 30, 60, 0.95);
+      --footer-bg: #0a0a15;
+    }
+
+    .dark-mode-btn {
+      background: rgba(0, 0, 0, 0.2);
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      margin-left: 10px;
+    }
+    .dark-mode-btn:hover { transform: scale(1.1); background: rgba(0, 0, 0, 0.3); }
+    body.dark-mode .dark-mode-btn { background: rgba(255, 255, 255, 0.2); }
+
+    /* RESET */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* NAVBAR */
+    .navbar-wrapper {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-radius: 80px;
+      padding: 10px 24px;
+      width: 100%;
+      max-width: 1200px;
+      pointer-events: all;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+    .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .logo-text { font-family: 'Potta One', cursive; font-size: 24px; display: inline-flex; align-items: center; gap: 2px; }
+    .logo-res { color: #1a56a0; }
+    body.dark-mode .logo-res { color: #6ab0ff; }
+    .logo-q { color: #F90404; }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links li a {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-main);
+      padding: 8px 18px;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+    .nav-links li a:hover { background: rgba(116, 180, 249, 0.67); transform: translateY(-2px); }
+    .nav-links li.active a { background: rgba(59, 143, 234, 0.67); font-weight: 600; }
+    .btn-signin {
+      background: #000000;
+      color: #FFFFFF;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode .btn-signin { background: #ff6b6b; }
+    .btn-signin:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* Mobile */
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .hamburger-menu span { width: 25px; height: 3px; background: var(--text-main); border-radius: 3px; }
+    @media (max-width: 768px) {
+      .hamburger-menu { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 85%;
+        max-width: 300px;
+        background: var(--nav-bg);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 20px;
+        transition: left 0.3s ease;
+        z-index: 999;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .nav-links.mobile-active { left: 20px; }
+      .nav-links li a { display: block; padding: 12px 20px; text-align: center; }
+    }
+
+    /* PAGE HEADER */
+    .page-header { padding: 140px 20px 50px; text-align: center; }
+    .page-badge {
+      display: inline-block;
+      background: rgba(119, 157, 193, 0.9);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 30px;
+      padding: 6px 22px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #D44633;
+      margin-bottom: 20px;
+    }
+    body.dark-mode .page-badge { background: rgba(0, 0, 0, 0.4); color: #ff9999; }
+    .page-title {
+      font-family: 'Rammetto One', cursive;
+      font-size: clamp(36px, 7vw, 56px);
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 15px;
+    }
+    .page-subtitle { font-size: 16px; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+    /* BLOG GRID */
+    .blog-section { padding: 0 20px 80px; }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .blog-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15); }
+    .blog-image {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #e03030, #f28678);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+    .blog-content { padding: 25px; }
+    .blog-category {
+      display: inline-block;
+      background: #e03030;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .blog-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+    .blog-meta {
+      font-size: 12px;
+      color: #e03030;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 15px;
+    }
+    .blog-excerpt {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    .read-more {
+      color: #e03030;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .read-more:hover { gap: 8px; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--footer-bg);
+      color: #ccc;
+      padding: 50px 60px 35px;
+    }
+    .footer-top { display: flex; justify-content: space-between; gap: 50px; margin-bottom: 40px; flex-wrap: wrap; }
+    .footer-brand { max-width: 300px; }
+    .footer-logo { font-family: 'Potta One', cursive; font-size: 28px; margin-bottom: 12px; }
+    .footer-logo .logo-res { color: #ffffff; }
+    .footer-logo .logo-q { color: #F90404; }
+    .footer-tagline { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .footer-sub { font-size: 14px; color: #999; line-height: 1.5; }
+    .footer-links { display: flex; gap: 50px; flex-wrap: wrap; }
+    .footer-col { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: #fff; margin-bottom: 4px; }
+    .footer-col a { font-size: 14px; color: #aaa; text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: #fff; transform: translateX(4px); display: inline-block; }
+    .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.1); margin-bottom: 25px; }
+    .footer-copy { font-size: 14px; color: #888; text-align: center; }
+
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .footer { padding: 35px 20px 25px; }
+      .footer-top { flex-direction: column; gap: 25px; }
+      .footer-links { gap: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="assets/ResQ Logo.png" alt="ResQ Logo"/></div>
+        <span class="logo-text"><span class="logo-res">Res</span><span class="logo-q">Q</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <a href="#" class="btn-signin" id="signinBtn">Sign In</a>
+      <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+    </nav>
+  </div>
+
+  <section class="page-header">
+    <div class="page-badge">Our Blog</div>
+    <h1 class="page-title">Insights & Updates</h1>
+    <p class="page-subtitle">Stories, updates, and insights from the ResQ team.</p>
+  </section>
+
+  <section class="blog-section">
+    <div class="blog-grid">
+      
+      <div class="blog-card">
+        <div class="blog-image">🚑</div>
+        <div class="blog-content">
+          <span class="blog-category">Product Update</span>
+          <h3>ResQ v2.0 is Here: Faster, Smarter, Safer</h3>
+          <div class="blog-meta"><span>June 1, 2026</span><span>5 min read</span></div>
+          <p class="blog-excerpt">We're thrilled to announce the launch of ResQ 2.0. New features include AI-powered crash detection, offline mode, and instant dispatch system...</p>
+          <a href="#" class="read-more" onclick="alert('Full article coming soon!'); return false;">Read More →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">🏥</div>
+        <div class="blog-content">
+          <span class="blog-category">Success Story</span>
+          <h3>How ResQ Saved 47 Minutes in Nagpur</h3>
+          <div class="blog-meta"><span>May 25, 2026</span><span>4 min read</span></div>
+          <p class="blog-excerpt">Real story from Nagpur: How ResQ's instant alert system helped reach an accident victim 47 minutes faster than traditional response time...</p>
+          <a href="#" class="read-more" onclick="alert('Full article coming soon!'); return false;">Read More →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">🤝</div>
+        <div class="blog-content">
+          <span class="blog-category">Partnership</span>
+          <h3>ResQ Partners with Indore Police Department</h3>
+          <div class="blog-meta"><span>May 18, 2026</span><span>3 min read</span></div>
+          <p class="blog-excerpt">We're proud to announce our partnership with Indore Police to integrate ResQ Command Center into their emergency response system...</p>
+          <a href="#" class="read-more" onclick="alert('Full article coming soon!'); return false;">Read More →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">📱</div>
+        <div class="blog-content">
+          <span class="blog-category">Tips & Guides</span>
+          <h3>5 Things You Didn't Know About ResQ App</h3>
+          <div class="blog-meta"><span>May 10, 2026</span><span>6 min read</span></div>
+          <p class="blog-excerpt">From bystander mode to offline capabilities, discover hidden features that make ResQ the most comprehensive emergency response app...</p>
+          <a href="#" class="read-more" onclick="alert('Full article coming soon!'); return false;">Read More →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">🏆</div>
+        <div class="blog-content">
+          <span class="blog-category">Awards</span>
+          <h3>ResQ Wins 'Best Social Impact Startup' Award</h3>
+          <div class="blog-meta"><span>April 28, 2026</span><span>3 min read</span></div>
+          <p class="blog-excerpt">ResQ was recognized at the India Innovation Summit 2026 for our work in reducing emergency response times...</p>
+          <a href="#" class="read-more" onclick="alert('Full article coming soon!'); return false;">Read More →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-image">🌍</div>
+        <div class="blog-content">
+          <span class="blog-category">Expansion</span>
+          <h3>ResQ Expanding to 20 New Cities</h3>
+          <div class="blog-meta"><span>April 15, 2026</span><span>4 min read</span></div>
+          <p class="blog-excerpt">We're bringing ResQ's life-saving technology to 20 more cities across India. See if your city is on the list...</p>
+          <a href="#" class="read-more" onclick="alert('Full article coming soon!'); return false;">Read More →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-res">Res</span><span class="logo-q">Q</span></div>
+        <p class="footer-tagline">Every Second Counts.</p>
+        <p class="footer-sub">AI-powered emergency response for Indian roads.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>PRODUCT</h5>
+          <a href="how-it-works.html">How it works</a>
+          <a href="features.html">Features</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="home.html">Get ResQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>COMPANY</h5>
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="careers.html">Careers</a>
+          <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h5>LEGAL</h5>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Services</a>
+          <a href="security.html">Security</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
+  </footer>
+
+  <script>
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.textContent = '☀️';
+      }
+      darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+      });
+    }
+
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelector('.nav-links');
+    function setupMobileMenu() {
+      const existing = document.querySelector('.hamburger-menu');
+      if (existing) existing.remove();
+      if (window.innerWidth <= 768 && navbar && navLinks) {
+        const hamburger = document.createElement('button');
+        hamburger.className = 'hamburger-menu';
+        hamburger.innerHTML = '<span></span><span></span><span></span>';
+        navbar.insertBefore(hamburger, navLinks);
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => navLinks.classList.remove('mobile-active'));
+        });
+      }
+    }
+    setupMobileMenu();
+    window.addEventListener('resize', setupMobileMenu);
+
+    document.getElementById('signinBtn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Sign In feature coming soon. Be the first to know when ResQ launches!');
+    });
+  </script>
+</body>
+</html>
