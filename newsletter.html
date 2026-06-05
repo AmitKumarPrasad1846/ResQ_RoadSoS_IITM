@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+  <title>ResQ – Join Newsletter | Stay Updated</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Potta+One&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-body: linear-gradient(180deg, #99CAFF 0%, #FFFFFF 18%);
+      --text-main: #1a1a2e;
+      --text-light: #3F3C3C;
+      --card-bg: #CCD7E2;
+      --card-bg-light: #FBE1E1;
+      --nav-bg: rgba(96, 162, 234, 0.85);
+      --footer-bg: #252525;
+      --btn-primary: #1075C7;
+    }
+    body.dark-mode {
+      --bg-body: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
+      --text-main: #ffffff;
+      --text-light: #cccccc;
+      --card-bg: #1e2a4a;
+      --card-bg-light: #2a1a3a;
+      --nav-bg: rgba(15, 30, 60, 0.95);
+      --footer-bg: #0a0a15;
+      --btn-primary: #ff6b6b;
+    }
+    .dark-mode-btn {
+      background: rgba(0, 0, 0, 0.2);
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      margin-left: 10px;
+    }
+    .dark-mode-btn:hover { transform: scale(1.1); background: rgba(0, 0, 0, 0.3); }
+    body.dark-mode .dark-mode-btn { background: rgba(255, 255, 255, 0.2); }
+    
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* NAVBAR */
+    .navbar-wrapper {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+      border-radius: 80px;
+      padding: 10px 24px;
+      width: 100%;
+      max-width: 1200px;
+      pointer-events: all;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+    .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .logo-text { font-family: 'Potta One', cursive; font-size: 24px; display: inline-flex; align-items: center; gap: 2px; }
+    .logo-res { color: #1a56a0; }
+    body.dark-mode .logo-res { color: #6ab0ff; }
+    .logo-q { color: #F90404; }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links li a {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-main);
+      padding: 8px 18px;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+    .nav-links li a:hover { background: rgba(116, 180, 249, 0.67); transform: translateY(-2px); }
+    .nav-links li.active a { background: rgba(59, 143, 234, 0.67); font-weight: 600; }
+    .btn-signin {
+      background: #000000;
+      color: #FFFFFF;
+      padding: 8px 24px;
+      border-radius: 40px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode .btn-signin { background: #ff6b6b; }
+    .btn-signin:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* Mobile */
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .hamburger-menu span { width: 25px; height: 3px; background: var(--text-main); border-radius: 3px; }
+    @media (max-width: 768px) {
+      .hamburger-menu { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 85%;
+        max-width: 300px;
+        background: var(--nav-bg);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 20px;
+        transition: left 0.3s ease;
+        z-index: 999;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .nav-links.mobile-active { left: 20px; }
+      .nav-links li a { display: block; padding: 12px 20px; text-align: center; }
+    }
+
+    /* Newsletter Hero */
+    .newsletter-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 60px;
+    }
+    .hero-icon { font-size: 70px; margin-bottom: 20px; }
+    .hero-title {
+      font-family: 'Rammetto One', cursive;
+      font-size: clamp(36px, 7vw, 56px);
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 15px;
+    }
+    .hero-desc {
+      font-size: 18px;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    /* Newsletter Benefits */
+    .benefits-section { padding: 40px 20px; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .benefit-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1); }
+    .benefit-icon { font-size: 45px; margin-bottom: 15px; }
+    .benefit-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .benefit-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+    /* Newsletter Form */
+    .form-section { padding: 40px 20px 80px; }
+    .form-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--card-bg-light);
+      border-radius: 30px;
+      padding: 50px 40px;
+      text-align: center;
+    }
+    .form-card h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+    .form-card p { font-size: 15px; color: var(--text-light); margin-bottom: 30px; }
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .input-group {
+      position: relative;
+    }
+    .input-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      border: 2px solid transparent;
+      border-radius: 60px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode .form-input {
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
+    .form-input:focus {
+      border-color: #e03030;
+      background: #fff;
+    }
+    body.dark-mode .form-input:focus {
+      background: #1a2a4a;
+    }
+    .name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    .name-row .input-group {
+      width: 100%;
+    }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    .checkbox-group input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #e03030;
+    }
+    .checkbox-group label {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .btn-subscribe {
+      background: #e03030;
+      color: #fff;
+      padding: 16px;
+      border: none;
+      border-radius: 60px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+    .btn-subscribe:hover {
+      background: #c02828;
+      transform: translateY(-2px);
+    }
+    .privacy-note {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 20px;
+    }
+    .privacy-note a { color: #e03030; text-decoration: none; }
+
+    /* Recent Newsletters */
+    .recent-section { padding: 40px 20px 80px; background: var(--card-bg-light); }
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .news-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 25px;
+      transition: all 0.3s ease;
+    }
+    .news-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1); }
+    .news-date {
+      font-size: 12px;
+      color: #e03030;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .news-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .news-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; margin-bottom: 15px; }
+    .read-link {
+      color: #e03030;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .read-link:hover { gap: 10px; }
+
+    /* Testimonial */
+    .testimonial-section { padding: 60px 20px; }
+    .testimonial-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 30px;
+      padding: 40px;
+      text-align: center;
+    }
+    .testimonial-quote { font-size: 50px; color: #e03030; margin-bottom: 15px; }
+    .testimonial-card p { font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
+    .testimonial-name { font-weight: 700; color: #e03030; }
+    .testimonial-email { font-size: 12px; color: var(--text-light); }
+
+    /* FOOTER */
+    .footer {
+      background: var(--footer-bg);
+      color: #ccc;
+      padding: 50px 60px 35px;
+    }
+    .footer-top { display: flex; justify-content: space-between; gap: 50px; margin-bottom: 40px; flex-wrap: wrap; }
+    .footer-brand { max-width: 300px; }
+    .footer-logo { font-family: 'Potta One', cursive; font-size: 28px; margin-bottom: 12px; }
+    .footer-logo .logo-res { color: #ffffff; }
+    .footer-logo .logo-q { color: #F90404; }
+    .footer-tagline { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .footer-sub { font-size: 14px; color: #999; line-height: 1.5; }
+    .footer-links { display: flex; gap: 50px; flex-wrap: wrap; }
+    .footer-col { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: #fff; margin-bottom: 4px; }
+    .footer-col a { font-size: 14px; color: #aaa; text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: #fff; transform: translateX(4px); display: inline-block; }
+    .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.1); margin-bottom: 25px; }
+    .footer-copy { font-size: 14px; color: #888; text-align: center; }
+
+    @media (max-width: 768px) {
+      .name-row { grid-template-columns: 1fr; }
+      .form-card { padding: 35px 25px; }
+      .testimonial-card { padding: 30px 20px; }
+      .footer { padding: 35px 20px 25px; }
+      .footer-top { flex-direction: column; gap: 25px; }
+      .footer-links { gap: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="assets/ResQ Logo.png" alt="ResQ Logo"/></div>
+        <span class="logo-text"><span class="logo-res">Res</span><span class="logo-q">Q</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <a href="login.html" class="btn-signin">Sign In</a>
+      <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+    </nav>
+  </div>
+
+  <section class="newsletter-hero">
+    <div>
+      <div class="hero-icon">📧</div>
+      <h1 class="hero-title">Join the ResQ Newsletter</h1>
+      <p class="hero-desc">Stay updated with the latest features, safety tips, and life-saving stories.</p>
+    </div>
+  </section>
+
+  <section class="benefits-section">
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🚀</div>
+        <h3>Product Updates</h3>
+        <p>Be the first to know about new features and improvements.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡️</div>
+        <h3>Safety Tips</h3>
+        <p>Weekly road safety tips and emergency preparedness guides.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">❤️</div>
+        <h3>Success Stories</h3>
+        <p>Real stories of lives saved by ResQ and our partners.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎁</div>
+        <h3>Exclusive Offers</h3>
+        <p>Special discounts and early access for subscribers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="form-card">
+      <h2>Subscribe Now</h2>
+      <p>Get the latest updates directly in your inbox. No spam, ever.</p>
+      
+      <form class="newsletter-form" id="newsletterForm" onsubmit="return handleSubscribe(event)">
+        <div class="name-row">
+          <div class="input-group">
+            <span class="input-icon">👤</span>
+            <input type="text" class="form-input" id="firstName" placeholder="First Name" required>
+          </div>
+          <div class="input-group">
+            <span class="input-icon">👤</span>
+            <input type="text" class="form-input" id="lastName" placeholder="Last Name" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <span class="input-icon">📧</span>
+          <input type="email" class="form-input" id="email" placeholder="Email Address" required>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="updatesCheckbox" checked>
+          <label>I want to receive weekly product updates</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="tipsCheckbox" checked>
+          <label>I want to receive safety tips & guides</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="offersCheckbox">
+          <label>I want to receive exclusive offers & discounts</label>
+        </div>
+        <button type="submit" class="btn-subscribe">Subscribe →</button>
+        <p class="privacy-note">By subscribing, you agree to our <a href="privacy-policy.html">Privacy Policy</a>. You can unsubscribe anytime.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="recent-section">
+    <h2 class="section-title">Recent Newsletters</h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-date">June 2026</div>
+        <h3>ResQ 2.0 Launch: What's New?</h3>
+        <p>Introducing AI-powered crash detection, offline mode, and 50% faster response times...</p>
+        <a href="#" class="read-link" onclick="alert('Newsletter preview coming soon!'); return false;">Read More →</a>
+      </div>
+      <div class="news-card">
+        <div class="news-date">May 2026</div>
+        <h3>Monsoon Driving Safety Tips</h3>
+        <p>Essential tips for safe driving during the rainy season. How ResQ can help in emergencies...</p>
+        <a href="#" class="read-link" onclick="alert('Newsletter preview coming soon!'); return false;">Read More →</a>
+      </div>
+      <div class="news-card">
+        <div class="news-date">April 2026</div>
+        <h3>ResQ Expands to 20 New Cities</h3>
+        <p>We're bringing life-saving technology to more cities across India. See if your city is on the list...</p>
+        <a href="#" class="read-link" onclick="alert('Newsletter preview coming soon!'); return false;">Read More →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p>The ResQ newsletter keeps me informed about road safety and new features. I've recommended ResQ to my entire family!</p>
+      <div class="testimonial-name">— Priya Sharma</div>
+      <div class="testimonial-email">Subscriber since 2025</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-res">Res</span><span class="logo-q">Q</span></div>
+        <p class="footer-tagline">Every Second Counts.</p>
+        <p class="footer-sub">AI-powered emergency response for Indian roads.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>PRODUCT</h5>
+          <a href="how-it-works.html">How it works</a>
+          <a href="features.html">Features</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="home.html">Get ResQ</a>
+        </div>
+        <div class="footer-col">
+          <h5>COMPANY</h5>
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="careers.html">Careers</a>
+          <a href="dashboard.html">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h5>LEGAL</h5>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Services</a>
+          <a href="security.html">Security</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">2026 ResQ - A small team, a big mission, and 1.7 lakh reasons to never stop.</p>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.textContent = '☀️';
+      }
+      darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+      });
+    }
+
+    // Newsletter Subscribe Handler
+    function handleSubscribe(event) {
+      event.preventDefault();
+      
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      
+      if (!firstName || !lastName) {
+        alert('Please enter your full name.');
+        return false;
+      }
+      
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return false;
+      }
+      
+      // Get selected preferences
+      const updates = document.getElementById('updatesCheckbox').checked;
+      const tips = document.getElementById('tipsCheckbox').checked;
+      const offers = document.getElementById('offersCheckbox').checked;
+      
+      let preferences = [];
+      if (updates) preferences.push('Product Updates');
+      if (tips) preferences.push('Safety Tips');
+      if (offers) preferences.push('Exclusive Offers');
+      
+      const prefText = preferences.length > 0 ? preferences.join(', ') : 'None';
+      
+      alert(`Thank you ${firstName} for subscribing!\n\nWe'll send updates to: ${email}\nPreferences: ${prefText}\n\nCheck your inbox for confirmation.`);
+      
+      // Clear form
+      document.getElementById('firstName').value = '';
+      document.getElementById('lastName').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('updatesCheckbox').checked = true;
+      document.getElementById('tipsCheckbox').checked = true;
+      document.getElementById('offersCheckbox').checked = false;
+      
+      return false;
+    }
+
+    // Mobile Hamburger
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelector('.nav-links');
+    function setupMobileMenu() {
+      const existing = document.querySelector('.hamburger-menu');
+      if (existing) existing.remove();
+      if (window.innerWidth <= 768 && navbar && navLinks) {
+        const hamburger = document.createElement('button');
+        hamburger.className = 'hamburger-menu';
+        hamburger.innerHTML = '<span></span><span></span><span></span>';
+        navbar.insertBefore(hamburger, navLinks);
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => navLinks.classList.remove('mobile-active'));
+        });
+      }
+    }
+    setupMobileMenu();
+    window.addEventListener('resize', setupMobileMenu);
+  </script>
+</body>
+</html>
