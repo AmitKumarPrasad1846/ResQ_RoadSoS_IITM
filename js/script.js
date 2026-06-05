@@ -206,13 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ═══════════════════════════════════════════════════════
      9. BUTTON ALERTS
      ══════════════════════════════════════════════════════ */
-  const signinBtn = document.getElementById('signinBtn');
-  if (signinBtn) {
-    signinBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('Sign In feature coming soon.\n\nResQ is currently in pilot phase.');
-    });
-  }
+ 
 
   const partnerBtn = document.getElementById('partnerBtn');
   if (partnerBtn) {
